@@ -60,9 +60,9 @@ output.
 ## Status
 
 - [x] Corpus committed (`demos/araby/corpus/araby.txt`)
-- [ ] Extraction (occurrences + entities + discourse anchors)
-- [ ] Reader ascription passes (boy / narrator / implied reader)
-- [ ] Ingest pipeline (`npm run araby`)
-- [ ] Report generator
+- [x] Extraction (46 occurrences, 26 entities, paragraph anchors — LLM annotator)
+- [x] Reader ascription passes (boy 21 / narrator 16 / reader 17; epiphany as countersigning)
+- [x] Ingest pipeline (`npm run araby`; serve mode for interrogation)
+- [x] Report generator (readings, divergence ledger, per-pair divergence curves)
 - [ ] Evaluator round 1 → feedback → iterate
 - [ ] Goal state: evaluator ≥4/5 on all axes
