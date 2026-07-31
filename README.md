@@ -60,12 +60,17 @@ Neither is derived from the other; every query declares which clock it reads. Th
 
 ## Status
 
-Design phase. This README is the project's coordination surface, in the spirit of rhizomatic's spec-first discipline: claims made here are provisional until an implementation and test vectors exist for them. Open fronts, roughly in order:
+Specification draft, no implementation yet. The spec is the project's coordination surface, in the spirit of rhizomatic's spec-first discipline: every MUST in it is provisional until a conformance vector exists for it.
 
-1. **The narrative vocabulary** — the role/context conventions (an L5 concern in rhizomatic terms) for events, perception, speech, expectation, and schema slots. This is the load-bearing design work.
-2. **The parser** — text → canonical delta stream, initially LLM-assisted, with provenance kept (the parser is itself just an author whose claims you can trust or not).
-3. **The absential engine** — expectation matching, store diffing, schema-hole resolution over rhizomatic views.
-4. **Character peers** — the store-per-character runtime and the witnessing/federation rules by which deltas cross into them.
+| Doc | Contents |
+|---|---|
+| [NSPEC-0](spec/00-overview.md) | Principles (N1–N6), architecture, the three clocks, conformance philosophy |
+| [NSPEC-1](spec/01-vocabulary.md) | The `nt.*` vocabulary: existents, events, discourse anchoring, perception, speech, expectation, obligation |
+| [NSPEC-2](spec/02-clocks.md) | Assertion / discourse / story time; anachrony as a computable relation |
+| [NSPEC-3](spec/03-stores.md) | Canon, sovereign character stores, witnessing-as-federation, reader stores, store-at-position |
+| [NSPEC-4](spec/04-absence.md) | The absential engine: the taxonomy, absence reports, the three detectors |
+
+Build fronts, roughly in order: the conformance vectors alongside each behavior; the parser (text → canonical stream — an ordinary derived author whose claims you trust or don't); the three standard adjudicators; the character-peer runtime.
 
 ## Relationship to rhizomatic
 
