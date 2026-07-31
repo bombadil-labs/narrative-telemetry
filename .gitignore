@@ -1,0 +1,9 @@
+node_modules/
+.loam/
+demos/dracula/homes/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# machine-specific while @bombadil/loam is installed from a local source build (TODO item 9)
+package-lock.json

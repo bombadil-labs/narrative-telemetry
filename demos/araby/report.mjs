@@ -1,0 +1,212 @@
+// Report generator: queries the served stores and distills the system's reading of Araby.
+// Everything here is read back off the stores — the report is a lens, not a source.
+// gatherReading() is the shared read; buildReport() renders markdown from it, and the
+// static-site export (araby.mjs) serializes the same gathered data as JSON.
+
+const READERS = ["boy", "narrator", "reader"];
+const READER_LABEL = {
+  boy: "the boy (in the moment)",
+  narrator: "the narrator (recalling)",
+  reader: "the implied reader",
+};
+const READER_PAIRS = [
+  ["boy", "narrator"],
+  ["boy", "reader"],
+  ["narrator", "reader"],
+];
+
+// Two readers agree on a pair when their latest states are identical OR one has explicitly
+// countersigned the other (a `concurs` claim) — convergence is authored, never string luck.
+const stateAt = (entries, ord) => entries?.filter((e) => e.ordinal <= ord).at(-1);
+const inDispute = (e1, r1, e2, r2) =>
+  e1 !== undefined && e2 !== undefined && e1.to !== e2.to &&
+  e1.concurs !== r2 && e2.concurs !== r1;
+
+export async function gatherReading({ extraction, aspects, stores, gql, opToken }) {
+  const occ = Object.fromEntries(extraction.occurrences.map((o) => [o.id, o]));
+  const entity = Object.fromEntries(extraction.entities.map((e) => [e.id, e]));
+  const label = (id) => entity[id]?.label ?? occ[id]?.id ?? id;
+
+  // Read every reader's ascription tracks off their own store.
+  const tracks = {};
+  for (const r of READERS) {
+    tracks[r] = {};
+    const subjects = new Set(extraction.ascriptions[r].map((a) => a.subject));
+    for (const s of subjects) {
+      const fields = aspects.join(" ");
+      const data = await gql(stores[r].base, opToken(r), `{ subject(entity: "${s}") { ${fields} } }`);
+      for (const a of aspects) {
+        const entries = (data.subject[a] ?? []).map((e) => ({
+          ...e,
+          ordinal: occ[e.occurrence]?.ordinal ?? 0,
+        }));
+        if (entries.length === 0) continue;
+        (tracks[r][s] ??= {})[a] = entries.sort((x, y) => x.ordinal - y.ordinal);
+      }
+    }
+  }
+
+  // Shared subject·aspect pairs (read by ≥2 readers).
+  const pairs = new Map();
+  for (const r of READERS) {
+    for (const [s, byAspect] of Object.entries(tracks[r])) {
+      for (const a of Object.keys(byAspect)) {
+        const key = `${s} ${a}`;
+        if (!pairs.has(key)) pairs.set(key, { subject: s, aspect: a, readers: {} });
+        pairs.get(key).readers[r] = byAspect[a];
+      }
+    }
+  }
+  const shared = [...pairs.values()].filter((p) => Object.keys(p.readers).length >= 2);
+
+  // Divergence-over-discourse curves, per reader pair.
+  const maxOrdinal = Math.max(...extraction.occurrences.map((o) => o.ordinal));
+  const curves = {};
+  for (const [r1, r2] of READER_PAIRS) {
+    const curve = [];
+    for (let ord = 1; ord <= maxOrdinal; ord++) {
+      let open = 0;
+      for (const p of shared) {
+        if (inDispute(stateAt(p.readers[r1], ord), r1, stateAt(p.readers[r2], ord), r2)) open++;
+      }
+      curve.push(open);
+    }
+    curves[`${r1}–${r2}`] = curve;
+  }
+
+  // Ledger rows with end-of-story states and open/closed judgment.
+  const ledger = shared.map((p) => {
+    const finals = {};
+    for (const r of READERS) {
+      const e = p.readers[r]?.at(-1);
+      if (e) finals[r] = { to: e.to, ...(e.concurs ? { concurs: e.concurs } : {}) };
+    }
+    let open = false;
+    for (let i = 0; i < READERS.length; i++)
+      for (let j = i + 1; j < READERS.length; j++)
+        if (inDispute(p.readers[READERS[i]]?.at(-1), READERS[i], p.readers[READERS[j]]?.at(-1), READERS[j]))
+          open = true;
+    return { subject: p.subject, aspect: p.aspect, finals, open };
+  });
+
+  const surviving = shared.filter((p) =>
+    inDispute(stateAt(p.readers["boy"], maxOrdinal), "boy",
+      stateAt(p.readers["narrator"], maxOrdinal), "narrator"));
+
+  return { occ, entity, label, tracks, shared, curves, ledger, surviving, maxOrdinal };
+}
+
+export function buildReport({ extraction }, g) {
+  const { occ, label, tracks, curves, ledger, surviving } = g;
+  const L = [];
+  L.push(`# Araby — a narrative-telemetry reading`);
+  L.push(``);
+  L.push(`Three readers read one ground. The **ground** is ${extraction.occurrences.length} ` +
+    `occurrences — things that happen in the story, carrying no interpretation — extracted from ` +
+    `the text and signed into a canonical store. Each reader — ${READERS.map((r) => `**${READER_LABEL[r]}**`).join(", ")} — ` +
+    `holds a sovereign copy of that ground plus **ascriptions**: their own signed claims about ` +
+    `what each occurrence changed. Nothing below is a property of the story "itself"; every ` +
+    `statement is a claim with an author, and the interesting structure is where the authors disagree.`);
+  L.push(``);
+  L.push(`*(Extraction was performed by an LLM annotator — itself just another author whose claims ` +
+    `you may weigh. Sources anchor to paragraphs: p07 = the story's seventh paragraph; ranges ` +
+    `like p26-p32 span dialogue.)*`);
+
+  L.push(``);
+  L.push(`## The ground (what happens)`);
+  L.push(``);
+  L.push(`| # | ¶ | occurrence | participants |`);
+  L.push(`|---|---|---|---|`);
+  for (const o of [...extraction.occurrences].sort((a, b) => a.ordinal - b.ordinal)) {
+    L.push(`| ${o.ordinal} | ${o.source.replace("araby:", "")} | ${o.description} | ${o.participants.map(label).join(", ")} |`);
+  }
+
+  L.push(``);
+  L.push(`## The readings (who sees what)`);
+  for (const r of READERS) {
+    L.push(``);
+    L.push(`### ${READER_LABEL[r]}`);
+    L.push(``);
+    for (const [s, byAspect] of Object.entries(tracks[r])) {
+      for (const [a, entries] of Object.entries(byAspect)) {
+        L.push(`- **${label(s)} · ${a}**: ` +
+          entries.map((e) => `${e.to} *(¶${occ[e.occurrence]?.source.replace("araby:p", "") ?? "?"})*`).join(" → "));
+      }
+    }
+  }
+
+  L.push(``);
+  L.push(`## The divergence ledger (where the readers disagree)`);
+  L.push(``);
+  L.push(`Same subject, same aspect, different signatures. End-of-story state per reader:`);
+  L.push(``);
+  L.push(`| subject · aspect | ${READERS.map((r) => READER_LABEL[r]).join(" | ")} |`);
+  L.push(`|---|${READERS.map(() => "---").join("|")}|`);
+  for (const row of ledger) {
+    const finals = READERS.map((r) =>
+      row.finals[r] === undefined
+        ? "—"
+        : row.finals[r].to + (row.finals[r].concurs ? ` *(countersigns the ${row.finals[r].concurs})*` : ""));
+    L.push(`| ${row.open ? "**≠** " : ""}${label(row.subject)} · ${row.aspect} | ${finals.join(" | ")} |`);
+  }
+
+  L.push(``);
+  L.push(`## Divergence over the telling`);
+  L.push(``);
+  L.push(`For each pair of readers: how many shared subject·aspect pairs the two currently ` +
+    `read differently, as the story unfolds (x = occurrence 1…${g.maxOrdinal}). A curve falling ` +
+    `means one reading has come to hold what the other holds — convergence, mechanically.`);
+  const spark = (vals) => {
+    const blocks = " ▁▂▃▄▅▆▇█";
+    const max = Math.max(...vals, 1);
+    return vals.map((v) => blocks[Math.round((v / max) * 8)]).join("");
+  };
+  for (const [pairName, curve] of Object.entries(curves)) {
+    const peak = Math.max(...curve);
+    const finalOpen = curve.at(-1);
+    L.push(``);
+    L.push(`**${pairName}** — peak ${peak}, at end ${finalOpen}` +
+      (finalOpen < peak ? ` (${peak - finalOpen} dispute${peak - finalOpen === 1 ? "" : "s"} closed)` : "") + `:`);
+    L.push(``);
+    L.push("```");
+    L.push(spark(curve));
+    L.push("```");
+  }
+  const bn = curves["boy–narrator"];
+  if (bn.at(-1) < Math.max(...bn)) {
+    L.push(``);
+    L.push(`The boy–narrator collapse at the final occurrence is the epiphany, measured: at ` +
+      `"Gazing up into the darkness…" the boy's reading of himself becomes the narrator's — ` +
+      `the boy countersigns states the narrator has held all along, and disputes that ran the ` +
+      `length of the story close on the last paragraph.` +
+      (surviving.length
+        ? ` What stays open between them: ${surviving.map((p) => `**${label(p.subject)} · ${p.aspect}**`).join(", ")} — ` +
+          `the epiphany shows the boy his vanity, not his cage; the dispute that survives the ` +
+          `story is the one Joyce says Dubliners cannot close from inside.`
+        : ``) +
+      ` The narrator–reader gap never closes: the older voice and the implied reader keep ` +
+      `their different registers to the end, which is why the story supports rereading.`);
+  }
+
+  L.push(``);
+  L.push(`## Method, honestly`);
+  L.push(``);
+  L.push(`The readings — including the convergence at the epiphany — are **authored annotations**, ` +
+    `not discoveries: an annotator read the story and recorded three readers' claims, and the ` +
+    `boy's final countersigns are explicit \`concurs\` claims, not measured coincidence. What the ` +
+    `system contributes is structure: every claim is signed, anchored, and queryable; divergence ` +
+    `and convergence are computed from the recorded claims, not asserted in prose; and rival ` +
+    `annotations could be added as further readers and diffed the same way. Telemetry here means ` +
+    `the measurement of a reading, not the automation of one.`);
+  L.push(``);
+  L.push(`## Provenance`);
+  L.push(``);
+  L.push(`Every claim above is a signed, content-addressed delta in a running store; the stores ` +
+    `federate by union and can be interrogated live (see GUIDE.md). The ground — the text's own ` +
+    `key's claims, viewed through the author-scoped Ground reading — is byte-identical across ` +
+    `all four stores; the readings never are. That difference is the story.`);
+  L.push(``);
+  return L.join("\n");
+}
+
+export { READERS, READER_LABEL };

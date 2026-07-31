@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Narrative Telemetry</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>Narrative Telemetry</h1>
+    <p class="tag">A text emits one canonical stream of what happened. Every mind that reads it,
+    hears about it, or lies about it keeps a store of its own. These pages are snapshots of such
+    stores: a <em>ground</em> of occurrences signed by the text, and rival <em>readings</em> —
+    signed interpretive claims — diffed against each other.</p>
+  </header>
+
+  <h2>Readings</h2>
+  <p class="note">Each reading below is exported from running
+    <a href="https://github.com/bombadil-labs/loam">loam</a> stores: sovereign, content-addressed,
+    federated databases — one for the text's ground, one per reader. What you see here is a static
+    snapshot of those stores; provenance and countersigns travel with it.</p>
+  <div class="cards" id="cards"></div>
+
+  <footer class="site">
+    <a href="https://github.com/bombadil-labs/narrative-telemetry">bombadil-labs/narrative-telemetry</a>
+    — built on <a href="https://github.com/bombadil-labs/loam">loam</a> /
+    <a href="https://github.com/bombadil-labs/rhizomatic">rhizomatic</a>.
+    Readings are authored annotations, measured — never discoveries the machine made alone.
+  </footer>
+</div>
+<script>
+fetch("data/index.json").then(r => r.json()).then(list => {
+  const cards = document.getElementById("cards");
+  for (const t of list) {
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = `reading.html?text=${encodeURIComponent(t.slug)}`;
+    a.innerHTML = `
+      <h3>${t.title}</h3>
+      <div class="byline">${t.author} — ${t.collection}</div>
+      <p>${t.blurb}</p>
+      <div class="stats">${t.occurrences} occurrences · ${t.readerCount} readers · ${t.aspects} aspects</div>`;
+    cards.appendChild(a);
+  }
+});
+</script>
+</body>
+</html>

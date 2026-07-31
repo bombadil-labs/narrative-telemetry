@@ -1,0 +1,29 @@
+{
+  "hyperschema": {
+    "name": "Occurrence",
+    "alg": 1,
+    "body": {
+      "op": "group",
+      "key": "byTargetContext",
+      "in": {
+        "op": "select",
+        "pred": { "hasPointer": { "targetEntity": { "var": "root" } } },
+        "in": { "op": "mask", "policy": "drop", "in": "input" }
+      }
+    }
+  },
+  "schema": {
+    "name": "Occurrence",
+    "alg": 1,
+    "props": {
+      "description": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "occurredAt": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "source": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "participants": { "all": { "order": { "byTimestamp": "asc" } } },
+      "ascriptions": { "all": { "order": { "byTimestamp": "asc" } } }
+    },
+    "default": { "pick": { "order": { "byTimestamp": "desc" } } }
+  },
+  "roots": ["event:jonathan-boards-train"],
+  "writable": ["description", "occurredAt", "source"]
+}

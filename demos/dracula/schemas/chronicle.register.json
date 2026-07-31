@@ -1,0 +1,24 @@
+{
+  "hyperschema": {
+    "name": "Chronicle",
+    "alg": 1,
+    "body": {
+      "op": "group",
+      "key": { "const": "transitions" },
+      "in": {
+        "op": "select",
+        "pred": { "hasPointer": { "targetEntity": { "var": "root" } } },
+        "in": { "op": "mask", "policy": "drop", "in": "input" }
+      }
+    }
+  },
+  "schema": {
+    "name": "Chronicle",
+    "alg": 1,
+    "props": {
+      "transitions": { "all": { "order": { "byTimestamp": "asc" } } }
+    },
+    "default": { "pick": { "order": { "byTimestamp": "desc" } } }
+  },
+  "roots": ["char:jonathan", "char:lucy", "object:crucifix"]
+}

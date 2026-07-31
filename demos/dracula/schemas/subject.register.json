@@ -1,0 +1,29 @@
+{
+  "hyperschema": {
+    "name": "Subject",
+    "alg": 1,
+    "body": {
+      "op": "group",
+      "key": "byTargetContext",
+      "in": {
+        "op": "select",
+        "pred": { "hasPointer": { "targetEntity": { "var": "root" } } },
+        "in": { "op": "mask", "policy": "drop", "in": "input" }
+      }
+    }
+  },
+  "schema": {
+    "name": "Subject",
+    "alg": 1,
+    "props": {
+      "occurrences": { "all": { "order": { "byTimestamp": "asc" } } },
+      "location": { "all": { "order": { "byTimestamp": "asc" } } },
+      "disquiet": { "all": { "order": { "byTimestamp": "asc" } } },
+      "vitality": { "all": { "order": { "byTimestamp": "asc" } } },
+      "throat": { "all": { "order": { "byTimestamp": "asc" } } },
+      "possession": { "all": { "order": { "byTimestamp": "asc" } } }
+    },
+    "default": { "all": { "order": { "byTimestamp": "asc" } } }
+  },
+  "roots": ["char:jonathan", "char:lucy", "object:crucifix"]
+}

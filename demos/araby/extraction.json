@@ -1,0 +1,1000 @@
+{
+ "paragraphs": 37,
+ "entities": [
+  {
+   "id": "char:boy",
+   "kind": "character",
+   "label": "the boy (narrator as a child)"
+  },
+  {
+   "id": "char:mangans-sister",
+   "kind": "character",
+   "label": "Mangan's sister"
+  },
+  {
+   "id": "char:mangan",
+   "kind": "character",
+   "label": "Mangan (the sister's brother, a playmate)"
+  },
+  {
+   "id": "char:uncle",
+   "kind": "character",
+   "label": "the boy's uncle"
+  },
+  {
+   "id": "char:aunt",
+   "kind": "character",
+   "label": "the boy's aunt"
+  },
+  {
+   "id": "char:priest",
+   "kind": "character",
+   "label": "the dead priest, former tenant"
+  },
+  {
+   "id": "char:mrs-mercer",
+   "kind": "character",
+   "label": "Mrs Mercer, a pawnbroker's widow"
+  },
+  {
+   "id": "char:young-lady",
+   "kind": "character",
+   "label": "the young lady at the bazaar stall"
+  },
+  {
+   "id": "char:two-gentlemen",
+   "kind": "character",
+   "label": "the two young gentlemen with English accents"
+  },
+  {
+   "id": "char:companions",
+   "kind": "character",
+   "label": "the boy's street companions"
+  },
+  {
+   "id": "char:master",
+   "kind": "character",
+   "label": "the schoolmaster"
+  },
+  {
+   "id": "char:turnstile-man",
+   "kind": "character",
+   "label": "the weary-looking man at the turnstile"
+  },
+  {
+   "id": "char:money-counters",
+   "kind": "character",
+   "label": "the two men counting money on a salver"
+  },
+  {
+   "id": "object:florin",
+   "kind": "object",
+   "label": "the florin (two shillings)"
+  },
+  {
+   "id": "object:priests-books",
+   "kind": "object",
+   "label": "the priest's paper-covered books"
+  },
+  {
+   "id": "object:bicycle-pump",
+   "kind": "object",
+   "label": "the priest's rusty bicycle-pump"
+  },
+  {
+   "id": "object:silver-bracelet",
+   "kind": "object",
+   "label": "Mangan's sister's silver bracelet"
+  },
+  {
+   "id": "object:porcelain-vases",
+   "kind": "object",
+   "label": "the porcelain vases and flowered tea-sets"
+  },
+  {
+   "id": "object:great-jars",
+   "kind": "object",
+   "label": "the great jars like eastern guards"
+  },
+  {
+   "id": "place:north-richmond-street",
+   "kind": "place",
+   "label": "North Richmond Street"
+  },
+  {
+   "id": "place:boys-house",
+   "kind": "place",
+   "label": "the boy's house (the priest's former house)"
+  },
+  {
+   "id": "place:back-drawing-room",
+   "kind": "place",
+   "label": "the back drawing-room where the priest died"
+  },
+  {
+   "id": "place:market-streets",
+   "kind": "place",
+   "label": "the flaring Saturday-evening market streets"
+  },
+  {
+   "id": "place:train",
+   "kind": "place",
+   "label": "the special train to the bazaar"
+  },
+  {
+   "id": "place:araby-bazaar",
+   "kind": "place",
+   "label": "the bazaar Araby"
+  },
+  {
+   "id": "place:cafe-chantant",
+   "kind": "place",
+   "label": "the Caf\u00e9 Chantant"
+  }
+ ],
+ "occurrences": [
+  {
+   "id": "event:street-described",
+   "description": "North Richmond Street, being blind, is quiet except when the Christian Brothers' School sets the boys free; an uninhabited house stands at the blind end and the other houses gaze at one another with brown imperturbable faces.",
+   "ordinal": 1,
+   "source": "araby:p01",
+   "participants": [
+    "place:north-richmond-street"
+   ]
+  },
+  {
+   "id": "event:priest-died",
+   "description": "The former tenant of the house, a priest, died in the back drawing-room; in his will he left his money to institutions and his furniture to his sister.",
+   "ordinal": 2,
+   "source": "araby:p02",
+   "participants": [
+    "char:priest",
+    "place:back-drawing-room",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:finds-books",
+   "description": "In the waste room behind the kitchen the boy finds a few paper-covered books: The Abbot, The Devout Communicant and The Memoirs of Vidocq; he likes the last best because its leaves are yellow.",
+   "ordinal": 3,
+   "source": "araby:p02",
+   "participants": [
+    "char:boy",
+    "object:priests-books",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:finds-bicycle-pump",
+   "description": "In the wild garden behind the house, under a straggling bush, the boy finds the late tenant's rusty bicycle-pump.",
+   "ordinal": 4,
+   "source": "araby:p02",
+   "participants": [
+    "char:boy",
+    "object:bicycle-pump",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:winter-play",
+   "description": "In the short days of winter the boys play in the street after dusk until their bodies glow, running through dark muddy lanes past the rough tribes from the cottages, the ashpits and the dark odorous stables.",
+   "ordinal": 5,
+   "source": "araby:p03",
+   "participants": [
+    "char:boy",
+    "char:companions",
+    "place:north-richmond-street"
+   ]
+  },
+  {
+   "id": "event:hide-from-uncle",
+   "description": "If the uncle is seen turning the corner, the boys hide in the shadow until they have seen him safely housed.",
+   "ordinal": 6,
+   "source": "araby:p03",
+   "participants": [
+    "char:boy",
+    "char:companions",
+    "char:uncle",
+    "place:north-richmond-street"
+   ]
+  },
+  {
+   "id": "event:sister-calls-brother",
+   "description": "When Mangan's sister comes out on the doorstep to call her brother in to his tea, the boys watch her from their shadow peer up and down the street.",
+   "ordinal": 7,
+   "source": "araby:p03",
+   "participants": [
+    "char:mangans-sister",
+    "char:mangan",
+    "char:boy",
+    "char:companions"
+   ]
+  },
+  {
+   "id": "event:watching-from-railings",
+   "description": "While her brother teases her before obeying, the boy stands by the railings looking at her; her dress swings as she moves and the soft rope of her hair tosses from side to side, her figure defined by the light from the half-opened door.",
+   "ordinal": 8,
+   "source": "araby:p03",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister",
+    "char:mangan"
+   ]
+  },
+  {
+   "id": "event:morning-watch",
+   "description": "Every morning the boy lies on the floor in the front parlour watching her door, the blind pulled down to within an inch of the sash so that he cannot be seen.",
+   "ordinal": 9,
+   "source": "araby:p04",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:following-to-school",
+   "description": "When she comes out, the boy seizes his books and follows her, keeping her brown figure always in his eye; near the point where their ways diverge he quickens his pace and passes her. This happens morning after morning; he has never spoken to her except for a few casual words.",
+   "ordinal": 10,
+   "source": "araby:p04",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister"
+   ]
+  },
+  {
+   "id": "event:market-errand",
+   "description": "On Saturday evenings the boy carries parcels for his aunt through the flaring streets, jostled by drunken men and bargaining women, amid curses of labourers, shrill litanies of shop-boys and the nasal chanting of street-singers singing a come-all-you about O'Donovan Rossa or a ballad about the troubles in our native land.",
+   "ordinal": 11,
+   "source": "araby:p05",
+   "participants": [
+    "char:boy",
+    "char:aunt",
+    "place:market-streets"
+   ]
+  },
+  {
+   "id": "event:chalice-image",
+   "description": "Amid the market noises the boy imagines that he bears his chalice safely through a throng of foes; her name springs to his lips in strange prayers and praises which he himself does not understand.",
+   "ordinal": 12,
+   "source": "araby:p05",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister",
+    "place:market-streets"
+   ]
+  },
+  {
+   "id": "event:tears-and-flood",
+   "description": "The boy's eyes are often full of tears, he cannot tell why, and at times a flood from his heart seems to pour itself out into his bosom; his body is like a harp and her words and gestures like fingers running upon the wires.",
+   "ordinal": 13,
+   "source": "araby:p05",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister"
+   ]
+  },
+  {
+   "id": "event:o-love-murmur",
+   "description": "One dark rainy evening the boy goes into the back drawing-room where the priest died; hearing rain on the sodden beds through a broken pane, he presses his palms together until they tremble, murmuring 'O love! O love!' many times.",
+   "ordinal": 14,
+   "source": "araby:p06",
+   "participants": [
+    "char:boy",
+    "place:back-drawing-room"
+   ]
+  },
+  {
+   "id": "event:first-words",
+   "description": "At last she speaks to him, asking was he going to Araby; he forgets whether he answered yes or no. It would be a splendid bazaar, she says; she would love to go.",
+   "ordinal": 15,
+   "source": "araby:p07",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:why-cant-you",
+   "description": "The boy asks her, 'And why can't you?'",
+   "ordinal": 16,
+   "source": "araby:p08",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister"
+   ]
+  },
+  {
+   "id": "event:bracelet-and-retreat",
+   "description": "While she speaks she turns a silver bracelet round and round her wrist; she cannot go because there will be a retreat that week in her convent. Her brother and two other boys are fighting for their caps and the boy is alone at the railings.",
+   "ordinal": 17,
+   "source": "araby:p09",
+   "participants": [
+    "char:mangans-sister",
+    "char:boy",
+    "char:mangan",
+    "object:silver-bracelet"
+   ]
+  },
+  {
+   "id": "event:lamplight-on-her",
+   "description": "She holds one of the spikes, bowing her head towards him; the light from the lamp opposite catches the white curve of her neck, lights up her hair and the hand upon the railing, and catches the white border of a petticoat, just visible as she stands at ease.",
+   "ordinal": 18,
+   "source": "araby:p09",
+   "participants": [
+    "char:mangans-sister",
+    "char:boy"
+   ]
+  },
+  {
+   "id": "event:well-for-you",
+   "description": "She says, 'It's well for you.'",
+   "ordinal": 19,
+   "source": "araby:p10",
+   "participants": [
+    "char:mangans-sister",
+    "char:boy"
+   ]
+  },
+  {
+   "id": "event:the-promise",
+   "description": "The boy says, 'If I go, I will bring you something.'",
+   "ordinal": 20,
+   "source": "araby:p11",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister"
+   ]
+  },
+  {
+   "id": "event:days-of-waiting",
+   "description": "After that evening the boy wishes to annihilate the tedious intervening days; her image comes between him and the page he strives to read, and the syllables of the word Araby are called to him through the silence.",
+   "ordinal": 21,
+   "source": "araby:p12",
+   "participants": [
+    "char:boy",
+    "char:mangans-sister",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:asks-leave",
+   "description": "The boy asks for leave to go to the bazaar on Saturday night; his aunt is surprised and hopes it is not some Freemason affair.",
+   "ordinal": 22,
+   "source": "araby:p12",
+   "participants": [
+    "char:boy",
+    "char:aunt",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:master-sternness",
+   "description": "The boy answers few questions in class; he watches his master's face pass from amiability to sternness, the master hoping he is not beginning to idle.",
+   "ordinal": 23,
+   "source": "araby:p12",
+   "participants": [
+    "char:boy",
+    "char:master"
+   ]
+  },
+  {
+   "id": "event:reminds-uncle",
+   "description": "On Saturday morning the boy reminds his uncle that he wishes to go to the bazaar in the evening; the uncle, fussing at the hallstand for the hat-brush, answers curtly: 'Yes, boy, I know.'",
+   "ordinal": 24,
+   "source": "araby:p13-p14",
+   "participants": [
+    "char:boy",
+    "char:uncle",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:walk-to-school",
+   "description": "Unable to lie at the parlour window because the uncle is in the hall, the boy leaves the house in bad humour and walks slowly towards the school through pitilessly raw air.",
+   "ordinal": 25,
+   "source": "araby:p15",
+   "participants": [
+    "char:boy",
+    "char:uncle"
+   ]
+  },
+  {
+   "id": "event:upper-rooms",
+   "description": "The uncle not yet home at dinner, the boy mounts to the high cold empty gloomy rooms of the upper house and goes from room to room singing; from the front window he watches his companions playing below and looks over at the dark house where she lives, seeing the brown-clad figure cast by his imagination.",
+   "ordinal": 26,
+   "source": "araby:p16",
+   "participants": [
+    "char:boy",
+    "char:companions",
+    "char:mangans-sister",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:mrs-mercer-visit",
+   "description": "Downstairs the boy finds Mrs Mercer, an old garrulous pawnbroker's widow who collects used stamps for some pious purpose, sitting at the fire; he endures the gossip of the tea-table, the meal prolonged beyond an hour, and still the uncle does not come.",
+   "ordinal": 27,
+   "source": "araby:p17",
+   "participants": [
+    "char:boy",
+    "char:mrs-mercer",
+    "char:aunt",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:mrs-mercer-leaves",
+   "description": "Mrs Mercer stands up to go after eight o'clock, sorry she cannot wait, as the night air is bad for her; the boy begins to walk up and down the room, clenching his fists, and his aunt says, 'I'm afraid you may put off your bazaar for this night of Our Lord.'",
+   "ordinal": 28,
+   "source": "araby:p17-p18",
+   "participants": [
+    "char:mrs-mercer",
+    "char:boy",
+    "char:aunt"
+   ]
+  },
+  {
+   "id": "event:uncle-returns",
+   "description": "At nine o'clock the boy hears his uncle's latchkey in the halldoor, hears him talking to himself and the hallstand rocking under the weight of his overcoat; the boy can interpret these signs.",
+   "ordinal": 29,
+   "source": "araby:p19",
+   "participants": [
+    "char:uncle",
+    "char:boy",
+    "place:boys-house"
+   ]
+  },
+  {
+   "id": "event:asks-for-money",
+   "description": "Midway through his dinner the boy asks the uncle for the money to go to the bazaar; the uncle has forgotten, and says, 'The people are in bed and after their first sleep now.'",
+   "ordinal": 30,
+   "source": "araby:p19-p20",
+   "participants": [
+    "char:boy",
+    "char:uncle"
+   ]
+  },
+  {
+   "id": "event:aunt-intervenes",
+   "description": "The boy does not smile; his aunt says energetically, 'Can't you give him the money and let him go? You've kept him late enough as it is.'",
+   "ordinal": 31,
+   "source": "araby:p21-p22",
+   "participants": [
+    "char:aunt",
+    "char:uncle",
+    "char:boy"
+   ]
+  },
+  {
+   "id": "event:uncle-proverb",
+   "description": "The uncle says he is very sorry he forgot and that he believes in the old saying 'All work and no play makes Jack a dull boy'; told a second time where the boy is going, he asks did he know 'The Arab's Farewell to his Steed' and, as the boy leaves the kitchen, is about to recite its opening lines to the aunt.",
+   "ordinal": 32,
+   "source": "araby:p23",
+   "participants": [
+    "char:uncle",
+    "char:boy",
+    "char:aunt"
+   ]
+  },
+  {
+   "id": "event:florin-departure",
+   "description": "The boy holds a florin tightly in his hand as he strides down Buckingham Street towards the station; the streets thronged with buyers and glaring with gas recall to him the purpose of his journey.",
+   "ordinal": 33,
+   "source": "araby:p24",
+   "participants": [
+    "char:boy",
+    "object:florin"
+   ]
+  },
+  {
+   "id": "event:deserted-train",
+   "description": "The boy takes his seat in a third-class carriage of a deserted train, which after an intolerable delay creeps out among ruinous houses and over the twinkling river; at Westland Row porters keep a crowd back, saying it is a special train for the bazaar, and he remains alone in the bare carriage.",
+   "ordinal": 34,
+   "source": "araby:p24",
+   "participants": [
+    "char:boy",
+    "place:train"
+   ]
+  },
+  {
+   "id": "event:arrival-magical-name",
+   "description": "The train draws up beside an improvised wooden platform; the boy passes out onto the road, sees by a lighted clock-dial that it is ten minutes to ten, and before him a large building displays the magical name.",
+   "ordinal": 35,
+   "source": "araby:p24",
+   "participants": [
+    "char:boy",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:shilling-turnstile",
+   "description": "Finding no sixpenny entrance and fearing the bazaar will close, the boy passes in quickly through a turnstile, handing a shilling to a weary-looking man.",
+   "ordinal": 36,
+   "source": "araby:p25",
+   "participants": [
+    "char:boy",
+    "char:turnstile-man",
+    "object:florin",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:dark-hall",
+   "description": "The boy finds himself in a big hall girdled at half its height by a gallery; nearly all the stalls are closed, the greater part of the hall is in darkness, and he recognises a silence like that which pervades a church after a service.",
+   "ordinal": 37,
+   "source": "araby:p25",
+   "participants": [
+    "char:boy",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:money-counting",
+   "description": "Before a curtain over which the words Caf\u00e9 Chantant are written in coloured lamps, two men count money on a salver; the boy listens to the fall of the coins.",
+   "ordinal": 38,
+   "source": "araby:p25",
+   "participants": [
+    "char:boy",
+    "char:money-counters",
+    "place:cafe-chantant",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:examines-vases",
+   "description": "Remembering with difficulty why he had come, the boy goes over to one of the open stalls and examines porcelain vases and flowered tea-sets.",
+   "ordinal": 39,
+   "source": "araby:p26",
+   "participants": [
+    "char:boy",
+    "object:porcelain-vases",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:english-banter",
+   "description": "At the door of the stall a young lady is talking and laughing with two young gentlemen; the boy remarks their English accents and listens vaguely to their conversation, which ends 'O, there's a ... fib!'",
+   "ordinal": 40,
+   "source": "araby:p26-p32",
+   "participants": [
+    "char:young-lady",
+    "char:two-gentlemen",
+    "char:boy",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:did-you-wish-to-buy",
+   "description": "Observing him, the young lady comes over and asks did he wish to buy anything; the tone of her voice is not encouraging, as if she has spoken out of a sense of duty.",
+   "ordinal": 41,
+   "source": "araby:p33",
+   "participants": [
+    "char:young-lady",
+    "char:boy"
+   ]
+  },
+  {
+   "id": "event:no-thank-you",
+   "description": "Looking humbly at the great jars that stand like eastern guards at either side of the dark entrance to the stall, the boy murmurs, 'No, thank you.'",
+   "ordinal": 42,
+   "source": "araby:p33-p34",
+   "participants": [
+    "char:boy",
+    "char:young-lady",
+    "object:great-jars"
+   ]
+  },
+  {
+   "id": "event:lady-returns-to-men",
+   "description": "The young lady changes the position of one of the vases and goes back to the two young men; they talk of the same subject, and once or twice she glances at the boy over her shoulder.",
+   "ordinal": 43,
+   "source": "araby:p35",
+   "participants": [
+    "char:young-lady",
+    "char:two-gentlemen",
+    "char:boy",
+    "object:porcelain-vases"
+   ]
+  },
+  {
+   "id": "event:pennies-fall",
+   "description": "The boy lingers before the stall though he knows his stay is useless, then turns away slowly and walks down the middle of the bazaar, allowing the two pennies to fall against the sixpence in his pocket.",
+   "ordinal": 44,
+   "source": "araby:p36",
+   "participants": [
+    "char:boy",
+    "object:florin",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:lights-out",
+   "description": "A voice calls from one end of the gallery that the light is out; the upper part of the hall is now completely dark.",
+   "ordinal": 45,
+   "source": "araby:p36",
+   "participants": [
+    "char:boy",
+    "place:araby-bazaar"
+   ]
+  },
+  {
+   "id": "event:final-gaze",
+   "description": "Gazing up into the darkness the boy sees himself as a creature driven and derided by vanity, and his eyes burn with anguish and anger.",
+   "ordinal": 46,
+   "source": "araby:p37",
+   "participants": [
+    "char:boy",
+    "place:araby-bazaar"
+   ]
+  }
+ ],
+ "ascriptions": {
+  "boy": [
+   {
+    "occurrence": "event:watching-from-railings",
+    "subject": "char:mangans-sister",
+    "aspect": "worth",
+    "to": "a figure defined by light, wholly radiant, worth every evening of watching"
+   },
+   {
+    "occurrence": "event:morning-watch",
+    "subject": "char:boy",
+    "aspect": "desire",
+    "to": "when her door opens my heart leaps; her name springs to my lips in prayers I do not understand"
+   },
+   {
+    "occurrence": "event:market-errand",
+    "subject": "place:market-streets",
+    "aspect": "mood",
+    "to": "a place most hostile to romance, a throng of foes to be passed through unharmed"
+   },
+   {
+    "occurrence": "event:chalice-image",
+    "subject": "char:boy",
+    "aspect": "mission",
+    "to": "a bearer of a sacred chalice, guarding something holy through the crowd"
+   },
+   {
+    "occurrence": "event:tears-and-flood",
+    "subject": "char:boy",
+    "aspect": "faith",
+    "to": "prayers and praises rise from me unbidden; my body is a harp she plays upon"
+   },
+   {
+    "occurrence": "event:o-love-murmur",
+    "subject": "char:boy",
+    "aspect": "desire",
+    "to": "devotion so intense that all my senses desire to veil themselves"
+   },
+   {
+    "occurrence": "event:first-words",
+    "subject": "char:mangans-sister",
+    "aspect": "worth",
+    "to": "she has spoken to me at last; the whole world is changed by her words"
+   },
+   {
+    "occurrence": "event:lamplight-on-her",
+    "subject": "char:mangans-sister",
+    "aspect": "worth",
+    "to": "the lamplight itself serves her, lighting her neck, her hair, her hand"
+   },
+   {
+    "occurrence": "event:the-promise",
+    "subject": "char:boy",
+    "aspect": "mission",
+    "to": "a vow undertaken: I will go to Araby and bring her something worthy of her"
+   },
+   {
+    "occurrence": "event:days-of-waiting",
+    "subject": "place:araby-bazaar",
+    "aspect": "worth",
+    "to": "a splendid place whose very syllables cast an Eastern enchantment over my soul"
+   },
+   {
+    "occurrence": "event:days-of-waiting",
+    "subject": "char:boy",
+    "aspect": "freedom",
+    "to": "chafing against school; the serious work of life is ugly monotonous child's play beside my desire"
+   },
+   {
+    "occurrence": "event:upper-rooms",
+    "subject": "char:boy",
+    "aspect": "mood",
+    "to": "liberated by the high cold empty rooms, singing, her image touched discreetly by lamplight"
+   },
+   {
+    "occurrence": "event:asks-for-money",
+    "subject": "char:boy",
+    "aspect": "mood",
+    "to": "the delay is intolerable; every minute the uncle eats is stolen from the quest"
+   },
+   {
+    "occurrence": "event:florin-departure",
+    "subject": "object:florin",
+    "aspect": "worth",
+    "to": "the token of the quest, gripped tightly, purpose recalled by its weight"
+   },
+   {
+    "occurrence": "event:arrival-magical-name",
+    "subject": "place:araby-bazaar",
+    "aspect": "worth",
+    "to": "the magical name displayed at last; the enchanted place reached"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "knowledge",
+    "to": "a creature driven and derided by vanity",
+    "concurs": "narrator"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "mood",
+    "to": "anguish and anger; the enchantment gone out in the dark, nothing bought, nothing to bring her"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "desire",
+    "to": "what did I ever want from that bazaar? there was nothing there I could have brought her",
+    "concurs": "narrator"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "mission",
+    "to": "no quest \u2014 an errand I dressed up as one; I had hardly ever even spoken to her",
+    "concurs": "narrator"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "faith",
+    "to": "my prayers were to nobody; I made a religion of a girl at a railing",
+    "concurs": "narrator"
+   }
+  ],
+  "narrator": [
+   {
+    "occurrence": "event:street-described",
+    "subject": "place:north-richmond-street",
+    "aspect": "mood",
+    "to": "blind and imperturbable: a dead end wearing a face of decency"
+   },
+   {
+    "occurrence": "event:priest-died",
+    "subject": "place:back-drawing-room",
+    "aspect": "mood",
+    "to": "musty air of a faith long enclosed; the house we lived in was already a reliquary"
+   },
+   {
+    "occurrence": "event:winter-play",
+    "subject": "char:boy",
+    "aspect": "freedom",
+    "to": "play already circumscribed by dark lanes, ashpits and shadow; even joy ran a gauntlet"
+   },
+   {
+    "occurrence": "event:watching-from-railings",
+    "subject": "char:boy",
+    "aspect": "desire",
+    "to": "confused adoration beginning, mistaken by the child for devotion"
+   },
+   {
+    "occurrence": "event:morning-watch",
+    "subject": "char:boy",
+    "aspect": "illusion",
+    "to": "foolish blood, foolish daily rites of watching a door through a lowered blind"
+   },
+   {
+    "occurrence": "event:chalice-image",
+    "subject": "char:boy",
+    "aspect": "illusion",
+    "to": "romance borrowed wholesale from religion; the child cast himself as grail-bearer in a market street"
+   },
+   {
+    "occurrence": "event:o-love-murmur",
+    "subject": "char:boy",
+    "aspect": "faith",
+    "to": "prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room"
+   },
+   {
+    "occurrence": "event:the-promise",
+    "subject": "char:boy",
+    "aspect": "mission",
+    "to": "an errand inflated into a quest by a boy who had never truly spoken to her"
+   },
+   {
+    "occurrence": "event:days-of-waiting",
+    "subject": "place:araby-bazaar",
+    "aspect": "illusion",
+    "to": "a name doing work no actual bazaar could do; Eastern enchantment conjured from syllables"
+   },
+   {
+    "occurrence": "event:uncle-returns",
+    "subject": "char:uncle",
+    "aspect": "knowledge",
+    "to": "signs the boy could already interpret: the talking to himself, the rocking hallstand"
+   },
+   {
+    "occurrence": "event:uncle-proverb",
+    "subject": "char:uncle",
+    "aspect": "worth",
+    "to": "carelessness dressed up in proverb and recitation; the guardian of the quest could not even remember it"
+   },
+   {
+    "occurrence": "event:deserted-train",
+    "subject": "char:boy",
+    "aspect": "mood",
+    "to": "the misgiving heart of that morning confirmed; a deserted special train was the truth of the journey"
+   },
+   {
+    "occurrence": "event:dark-hall",
+    "subject": "place:araby-bazaar",
+    "aspect": "faith",
+    "to": "a church after a service: the enchantment already over before the pilgrim arrived"
+   },
+   {
+    "occurrence": "event:no-thank-you",
+    "subject": "char:boy",
+    "aspect": "desire",
+    "to": "the errand hollow at the very moment of performing it; there was never anything to buy"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "knowledge",
+    "to": "a creature driven and derided by vanity"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "mood",
+    "to": "anguish and anger: the one moment the child's eyes and mine are the same",
+    "concurs": "boy"
+   },
+   {
+    "occurrence": "event:lamplight-on-her",
+    "subject": "char:mangans-sister",
+    "aspect": "illusion",
+    "to": "I remember lamplight, a white curve of neck, the border of a petticoat \u2014 memory made her an image, never a person; that was the trouble from the start"
+   },
+   {
+    "occurrence": "event:aunt-intervenes",
+    "subject": "char:aunt",
+    "aspect": "worth",
+    "to": "her one energetic sentence rescues the errand the uncle forgot; kindness in that house spoke rarely and to the point"
+   }
+  ],
+  "reader": [
+   {
+    "occurrence": "event:street-described",
+    "subject": "place:north-richmond-street",
+    "aspect": "freedom",
+    "to": "a blind street: the dead end is the figure for every route the story will take"
+   },
+   {
+    "occurrence": "event:priest-died",
+    "subject": "char:priest",
+    "aspect": "worth",
+    "to": "charity itemized in a will: money to institutions, furniture to a sister; piety audited like an estate"
+   },
+   {
+    "occurrence": "event:finds-books",
+    "subject": "object:priests-books",
+    "aspect": "worth",
+    "to": "devotion, romance and crime fiction shelved together, the yellowest leaves preferred; reading habits the story will repeat"
+   },
+   {
+    "occurrence": "event:market-errand",
+    "subject": "place:market-streets",
+    "aspect": "mood",
+    "to": "the litanies of shop-boys: liturgy already fused to commerce, sacred vocabulary at the pig-cheek barrels"
+   },
+   {
+    "occurrence": "event:chalice-image",
+    "subject": "char:boy",
+    "aspect": "illusion",
+    "to": "religious language doing romantic work; the chalice is borrowed capital he will spend at the bazaar"
+   },
+   {
+    "occurrence": "event:bracelet-and-retreat",
+    "subject": "object:silver-bracelet",
+    "aspect": "worth",
+    "to": "she turns silver on her wrist while pleading a convent retreat; ornament and piety on the same arm"
+   },
+   {
+    "occurrence": "event:days-of-waiting",
+    "subject": "place:araby-bazaar",
+    "aspect": "illusion",
+    "to": "shabby Orientalism: an Eastern enchantment retailed in Dublin at a shilling a head"
+   },
+   {
+    "occurrence": "event:mrs-mercer-visit",
+    "subject": "char:mrs-mercer",
+    "aspect": "worth",
+    "to": "a pawnbroker's widow collecting used stamps for a pious purpose: piety and pawnage joined again"
+   },
+   {
+    "occurrence": "event:uncle-returns",
+    "subject": "char:uncle",
+    "aspect": "knowledge",
+    "to": "latchkey signs the boy can interpret: drink, familiar and never named; the household economy of a Dublin Saturday"
+   },
+   {
+    "occurrence": "event:florin-departure",
+    "subject": "object:florin",
+    "aspect": "worth",
+    "to": "two shillings: the entire treasury of the quest, and it will not survive the gate"
+   },
+   {
+    "occurrence": "event:shilling-turnstile",
+    "subject": "object:florin",
+    "aspect": "worth",
+    "to": "half the florin gone to a weary man at the turnstile; no sixpenny entrance for latecomers"
+   },
+   {
+    "occurrence": "event:money-counting",
+    "subject": "place:cafe-chantant",
+    "aspect": "mood",
+    "to": "coins falling on a salver in church-like silence: the collection plate after the service"
+   },
+   {
+    "occurrence": "event:english-banter",
+    "subject": "char:young-lady",
+    "aspect": "mood",
+    "to": "English accents flirting over a 'fib' at an Oriental bazaar: the imperial marketplace in miniature, indifferent to Dublin devotion"
+   },
+   {
+    "occurrence": "event:no-thank-you",
+    "subject": "char:boy",
+    "aspect": "worth",
+    "to": "with eightpence left he could not have bought her anything anyway; the refusal only ratifies the arithmetic"
+   },
+   {
+    "occurrence": "event:pennies-fall",
+    "subject": "object:florin",
+    "aspect": "worth",
+    "to": "two pennies against the sixpence: the audit of the quest, counted out in his pocket"
+   },
+   {
+    "occurrence": "event:lights-out",
+    "subject": "place:araby-bazaar",
+    "aspect": "mood",
+    "to": "closing time as revelation: the lights go out on the enchantment because the till is counted"
+   },
+   {
+    "occurrence": "event:final-gaze",
+    "subject": "char:boy",
+    "aspect": "knowledge",
+    "to": "epiphany as anagnorisis: the blind street internalized; Dublin's paralysis recognized from inside a darkened hall"
+   },
+   {
+    "occurrence": "event:lamplight-on-her",
+    "subject": "char:mangans-sister",
+    "aspect": "worth",
+    "to": "the light inventories her \u2014 neck, hair, hand, petticoat \u2014 while she pleads a convent retreat; the story grants her no interior, only illumination"
+   },
+   {
+    "occurrence": "event:mrs-mercer-leaves",
+    "subject": "char:aunt",
+    "aspect": "faith",
+    "to": "'this night of Our Lord': piety meters even a bazaar; the household calendar is liturgical before it is commercial"
+   },
+   {
+    "occurrence": "event:uncle-proverb",
+    "subject": "char:uncle",
+    "aspect": "illusion",
+    "to": "the household's own cheapened Orientalism: 'The Arab's Farewell to his Steed' recited over a forgotten florin \u2014 the East as parlour piece, at home before the boy ever boards the train"
+   },
+   {
+    "occurrence": "event:market-errand",
+    "subject": "place:market-streets",
+    "aspect": "freedom",
+    "to": "a come-all-you about O'Donovan Rossa in the market din: nationalist memory hawked alongside pig-cheeks \u2014 the political frame the boy's romance screens out"
+   }
+  ]
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "narrative-telemetry",
+  "version": "0.0.1",
+  "private": true,
+  "description": "One canonical stream of what happened; a sovereign store for every mind that reads it, hears about it, or lies about it. Built on Loam.",
+  "license": "(MIT OR Apache-2.0)",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "groundbreak": "node demos/dracula/groundbreak.mjs",
+    "araby": "node demos/araby/araby.mjs",
+    "araby:serve": "node demos/araby/araby.mjs --serve"
+  },
+  "dependencies": {
+    "@bombadil/loam": "^0.1.0",
+    "@bombadil/rhizomatic": "^0.10.0"
+  }
+}
