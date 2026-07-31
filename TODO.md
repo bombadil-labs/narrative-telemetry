@@ -1,0 +1,67 @@
+# TODO
+
+_The backlog. The next thing to build is drawn from here; when it lands, it leaves this file and
+enters `spec/` with a provenance footer. Ordered roughly by dependency, not priority._
+
+## v1 spine — the *Dracula* demo
+
+1. **Decide canonical Event granularity for *Dracula*** — per scene, per line, per speech-act?
+   (README open question; corpus-dependent.) *Dracula*'s natural grain is probably the dated
+   diary/letter/telegram entry — the text segments itself. Decision blocks item 2.
+2. **First register file: `event.register.json`** — the canonical Event hyperschema + schema
+   (README's worked example is the sketch to make real). This is the first landing; it brings
+   the first `spec/` section with it.
+3. **Canonical store for *Dracula*** — `demos/dracula/`: ingest a first slice of the Gutenberg
+   text as Event deltas. Epistolary, so likely **ungoverned** (no single narrating authority) —
+   the first real test of that posture.
+4. **Translation pass for source markup** — Gutenberg plain text → Event deltas via an
+   operator-signed translation spec, lifting the `cinelog`-into-the-village pattern
+   (`loam demos/village/village.mjs`) rather than re-deriving it.
+5. **Point-of-view stores** — start with two sovereign stores (Mina, Seward), each growing by
+   the two moves only: pull (perception) and author+point (belief). Include one distorted-belief
+   fixture (a delta with no canonical correspondent — the Wormtongue move).
+6. **`tellsAbout` mutation** — the telling as one canonical n-ary claim; its effect as a
+   federation event in the told store. Verify epiphany latency is a pure read off the two
+   timestamps.
+7. **Confluence store + first comparative lens** — `readers/irony` pulls canon + POV stores,
+   writes nothing; `DramaticIrony` as the live set-difference lens (village `almanac` →
+   `Dossier` family is the direct precedent).
+8. **Confluence dashboard** — in the shape of the village's `dashboard.html`.
+
+## Derived telemetry (each is a resolver/runner landing, loam §22/§6)
+
+- **dramatic-irony-gap** — subscription that fires the instant `canon ∖ character` opens or
+  closes at an entity.
+- **epiphany-latency** — canonical telling timestamp vs. federation-merge timestamp in the
+  target store.
+- **unreliable-narrator-index** — divergence rate between a store's authored (non-pulled)
+  deltas and canonical deltas at the same entities.
+- **tension-curve** — bucket-pure resolver folding scene-level valence deltas into a curve
+  (needs a valence vocabulary decision first).
+
+## Open design questions (from README — each closes by building, not deciding in the abstract)
+
+- **Reader granularity** — per-analysis implied-reader store, with a human's reading as a fork
+  of it (the current lean). Test against the first irony analysis.
+- **Critical schools: Schema vs. sovereign store** — build one of each (a formalist Schema over
+  canon; a paranoid reading as its own doxastic store) and see which feels honest.
+- **Quarantine → promoted reading** — adopt loam §24's two-strength promotion model for peer
+  review of critical readings, once slices past 1 land upstream.
+
+## Carried forward from the discarded draft spec (re-derive in Loam terms only if they earn it)
+
+- **Two clocks** — discourse position (where in the telling something is disclosed) vs. story
+  time (when it happens in the world) as distinct claim fields on Events; loam §26 as-of reads
+  are the natural query surface. Anachrony (flashback, foreshadowing, in-medias-res) then
+  becomes a computable relation between the two orderings. Reader-store construction "up to
+  discourse position p" wants this.
+- **Absence taxonomy as resolvers** — three distinct species of narratively-live absence, each
+  a candidate resolver: *unmet expectation* (an expectation claim with no satisfying delta yet —
+  suspense, Chekhov's gun), *epistemic asymmetry* (the dramatic-irony-gap family, already
+  above), *structural hole* (a reading's schema property resolving to absent — the open case,
+  the plot hole). The first is the novel one; expectation claims need a vocabulary decision.
+- **Expectation ledger** — every expectation/obligation with open/met/expired status at
+  end-of-text; the payoff audit. Depends on the expectation vocabulary.
+- **Lie detection as a diff** — a telling whose content the teller's own store doesn't hold (or
+  holds contradicted) at utterance time. Derivable, not declarable; a resolver over the
+  federation log + teller store.
