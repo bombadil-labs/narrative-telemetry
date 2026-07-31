@@ -18,3 +18,4 @@ quarantine — are marked "loam §N" to keep the two numberings distinct.)
 | §3 | [Context-free ground: tracks are reads, frames are the reader's](spec/03-context-free-ground.md) |
 | §4 | [Occurrences and ascriptions: characters are readers](spec/04-occurrences-and-ascriptions.md) |
 | §5 | [PROTOTYPE-1: the Araby pipeline, externally verified](spec/05-araby-prototype.md) |
+| §6 | [The static site: store snapshots on GitHub Pages](spec/06-static-site.md) |

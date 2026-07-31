@@ -2,7 +2,7 @@
 
 Three readers read one ground. The **ground** is 46 occurrences — things that happen in the story, carrying no interpretation — extracted from the text and signed into a canonical store. Each reader — **the boy (in the moment)**, **the narrator (recalling)**, **the implied reader** — holds a sovereign copy of that ground plus **ascriptions**: their own signed claims about what each occurrence changed. Nothing below is a property of the story "itself"; every statement is a claim with an author, and the interesting structure is where the authors disagree.
 
-*(Extraction was performed by an LLM annotator — itself just another author whose claims you may weigh. Sources anchor to paragraphs: p07 = the story's seventh paragraph.)*
+*(Extraction was performed by an LLM annotator — itself just another author whose claims you may weigh. Sources anchor to paragraphs: p07 = the story's seventh paragraph; ranges like p26-p32 span dialogue.)*
 
 ## The ground (what happens)
 

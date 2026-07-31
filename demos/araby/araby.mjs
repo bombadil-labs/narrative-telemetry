@@ -316,9 +316,9 @@ for (const probeId of ["event:final-gaze", byOrdinal[Math.floor(byOrdinal.length
 }
 
 // ---- report -----------------------------------------------------------------------------------
-const { buildReport } = await import(join(ROOT, "report.mjs"));
-const report = await buildReport({ extraction, aspects, stores, gql, opToken });
-writeFileSync(join(OUT, "report.md"), report);
+const { gatherReading, buildReport, READER_LABEL } = await import(join(ROOT, "report.mjs"));
+const gathered = await gatherReading({ extraction, aspects, stores, gql, opToken });
+writeFileSync(join(OUT, "report.md"), buildReport({ extraction }, gathered));
 console.log(`araby: output/report.md written`);
 
 // Paragraph-numbered text: occurrence, ascription, and Joyce's sentence on one screen.
@@ -330,6 +330,52 @@ writeFileSync(
     paras.map((p, i) => `[p${String(i + 1).padStart(2, "0")}] ${p}`).join("\n\n") + "\n",
 );
 console.log(`araby: output/araby-numbered.txt written (${paras.length} paragraphs)`);
+
+// Static-site export: the same gathered data, serialized for docs/ (GitHub Pages). The site
+// embeds this JSON — a snapshot of the stores, provenance and countersigns intact.
+const groundHex = (await gql(stores.canon.base, opToken("canon"),
+  `{ ground(entity: "event:final-gaze") { _hex } }`)).ground._hex;
+const siteData = {
+  meta: {
+    slug: "araby",
+    title: "Araby",
+    author: "James Joyce",
+    collection: "Dubliners (1914)",
+    blurb: "A boy's enchanted errand to a closing bazaar, read three ways: in the moment, in recollection, and from outside.",
+    readers: READER_LABEL,
+    groundHex,
+    occurrences: extraction.occurrences.length,
+    generated: "narrative-telemetry pipeline (loam stores; see repo)",
+  },
+  paragraphs: paras,
+  entities: extraction.entities,
+  occurrences: [...extraction.occurrences].sort((a, b) => a.ordinal - b.ordinal),
+  aspects,
+  tracks: gathered.tracks,
+  curves: gathered.curves,
+  ledger: gathered.ledger,
+};
+const DOCS_DATA = join(ROOT, "..", "..", "docs", "data");
+mkdirSync(DOCS_DATA, { recursive: true });
+writeFileSync(join(DOCS_DATA, "araby.json"), JSON.stringify(siteData));
+// The landing page's list of readings grows as pipelines run: each text upserts its own card.
+const indexPath = join(DOCS_DATA, "index.json");
+let siteIndex = [];
+try { siteIndex = JSON.parse(readFileSync(indexPath, "utf8")); } catch { /* first run */ }
+const card = {
+  slug: siteData.meta.slug,
+  title: siteData.meta.title,
+  author: siteData.meta.author,
+  collection: siteData.meta.collection,
+  blurb: siteData.meta.blurb,
+  occurrences: extraction.occurrences.length,
+  readerCount: Object.keys(extraction.ascriptions).length,
+  aspects: aspects.length,
+};
+siteIndex = [...siteIndex.filter((c) => c.slug !== card.slug), card]
+  .sort((a, b) => a.title.localeCompare(b.title));
+writeFileSync(indexPath, JSON.stringify(siteIndex, null, 2) + "\n");
+console.log(`araby: docs/data/araby.json exported; site index has ${siteIndex.length} reading(s)`);
 
 if (SERVE_MODE) {
   console.log("araby: serving —");

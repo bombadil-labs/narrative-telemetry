@@ -167,3 +167,17 @@ caught the extraction flattening the nationalist frame), reader ascriptions for 
 paragraph-numbered text emitted beside the report, and a documented add-your-own-reader
 workflow. Remaining →5 items live in PROTOTYPE.md's post-goal backlog; the scripted
 add-reader command and an HTML view are the two that would change who can use this.
+
+## 2026-07-31 — The static site (spec §6)
+
+Stores → static JSON → GitHub Pages, per Myk's direction. Decisions: the export runs inside
+the pipeline and serializes the SAME gathered data as the markdown report (one read, two
+renderings — the site can't drift from the stores); the landing index is upserted per
+pipeline run, so "a growing list of readings" is literally what happens when you run a new
+text's pipeline; reading pages keep the Method-honestly section (§5's load-bearing candor).
+Charts follow the dataviz discipline: palettes machine-validated in both modes, pair-curves
+get their own hue set (identity never shares hues across identity systems), contrast
+warnings discharged with direct labels + a data table, and the rendered pages were
+screenshotted and inspected in both modes before landing (caught one end-label collision).
+Both evaluator transcripts, previously only in the task record, are preserved verbatim in
+demos/araby/evaluations/.

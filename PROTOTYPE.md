@@ -76,8 +76,10 @@ output.
 
 - Scripted `add-reader` command (the guide documents the manual path; the classroom use is
   each student signing a reading and the class diffing them — the killer feature).
-- Browsable HTML view over the stores (loam renderers, §23 upstream) — curl is a non-starter
-  for literature students.
+- ~~Browsable HTML view~~ — **done (spec §6):** static-JSON export + GitHub Pages site
+  (`docs/`); landing page grows per pipeline run; reading pages render chart, ledger, and the
+  text-beside-timeline panes. (Live loam renderers, §23 upstream, remain a future option for
+  the served mode.)
 - The boy's ¶37 countersigns read as the narrator ventriloquized — defensible as the epiphany
   itself; consider marking them explicitly as the moment the boy's voice becomes the
   narrator's.
