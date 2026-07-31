@@ -14,3 +14,4 @@ quarantine — are marked "loam §N" to keep the two numberings distinct.)
 | §   | Section |
 | --- | ------- |
 | §1 | [Groundbreak: two sovereign stores over one text](spec/01-groundbreak.md) |
+| §2 | [Transition granularity: the unit of ground is the state change](spec/02-transitions.md) |

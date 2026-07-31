@@ -1,0 +1,30 @@
+{
+  "hyperschema": {
+    "name": "Track",
+    "alg": 1,
+    "body": {
+      "op": "group",
+      "key": "byTargetContext",
+      "in": {
+        "op": "select",
+        "pred": { "hasPointer": { "targetEntity": { "var": "root" } } },
+        "in": { "op": "mask", "policy": "drop", "in": "input" }
+      }
+    }
+  },
+  "schema": {
+    "name": "Track",
+    "alg": 1,
+    "props": {
+      "transitions": { "all": { "order": { "byTimestamp": "asc" } } }
+    },
+    "default": { "pick": { "order": { "byTimestamp": "desc" } } }
+  },
+  "roots": [
+    "track:jonathan.location",
+    "track:jonathan.disquiet",
+    "track:crucifix.possession",
+    "track:lucy.vitality",
+    "track:lucy.throat"
+  ]
+}

@@ -10,6 +10,8 @@ verifies the model-in-one-breath's claims mechanically:
   occurrence**, with the dated diary/letter/telegram entry as its `source` — *Dracula* segments
   itself, and `occurredAt` vs `source` already carries the story-time/discourse-time distinction
   in embryo (`occurredAt: 1893-05-01` narrated in `jonathan-journal:1893-05-03`).
+  *(Granularity and the Event register superseded by §2 — the unit of ground is now the
+  transition; the `occurredAt`/`source` distinction and everything else here carries forward.)*
 - **Diarists sign their own entries.** Canon's Events are authored by Jonathan's and Seward's
   keys under operator-signed write grants — the epistolary text's multi-witness structure is in
   the provenance from delta one. (A fully **ungoverned** canon — no operator at all, the

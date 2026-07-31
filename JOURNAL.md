@@ -44,3 +44,26 @@ learnings worth more than the diff:
   registration deltas — infrastructure, not narrative. The telemetry filters to story deltas
   (claims pointing at `event:*`). First instance of what will be a recurring discipline:
   telemetry reads the narrative ground, not the store's constitution.
+
+## 2026-07-31 — Transition granularity (spec §2)
+
+Myk's ruling: much more granularity — events for all state transitions of whatever sort,
+arbitrarily many, independently tracked. The Event-per-narrated-occurrence model (§1) lasted
+one landing, which is what a groundbreak is for. Replaced by Transition + Track registers:
+one entity per state change of one aspect, filed n-arily at its subject and at
+`track:<subject>.<aspect>` via claim-template mutations (the planner demo's `invite` pattern).
+Learnings:
+
+- **Claim-template contexts are static strings**, so the aspect can't parameterize the filing
+  context — it rides as a scalar prop instead, and the track entity carries the
+  subject×aspect pairing in its id. Good enough, and it keeps one template for every kind of
+  transition.
+- **`roots` don't scope queries** — `resolve(lens, args.entity)` takes any entity id — so
+  "arbitrarily many" costs nothing: transition entities are minted freely and queried by id.
+  Roots are just the enumerable starter set.
+- **The generic gather composes for free:** the Track query at a `char:*` entity reads a
+  subject's transitions across all aspects. One register, two instruments.
+- **`from` deliberately omitted:** a transition asserts the new state; the prior state is the
+  track's previous transition, and a disputed *from* is a competing transition, not a field.
+- Current-state is a client-side fold in the demo; promoting it to a registered resolver
+  (loam §22) is the natural next landing, alongside per-track irony as a served lens.

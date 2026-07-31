@@ -5,10 +5,16 @@ enters `spec/` with a provenance footer. Ordered roughly by dependency, not prio
 
 ## v1 spine — the *Dracula* demo
 
-1. ~~Decide canonical Event granularity~~ — **done (spec §1):** one Event per narrated
-   occurrence; the dated diary/letter/telegram entry is its `source`.
-2. ~~First register file: `event.register.json`~~ — **done (spec §1):**
-   `demos/dracula/schemas/event.register.json`, exercised by `npm run groundbreak`.
+1. ~~Decide canonical Event granularity~~ — **done, twice (spec §1, superseded by §2):** the
+   unit of ground is the transition — one entity per state change of one aspect, arbitrarily
+   many per passage, independently tracked at `track:<subject>.<aspect>`.
+2. ~~First register files~~ — **done (spec §2):**
+   `demos/dracula/schemas/{transition,track}.register.json`, exercised by `npm run groundbreak`.
+2a. **Current-state resolver** — the state-of-a-track fold (latest transition by `occurredAt`)
+   runs client-side in the demo; promote it to a registered resolver (loam §22) so stores
+   serve `state` directly.
+2b. **Per-track irony as a served lens** — the per-track set-difference is computed in-process;
+   the confluence store (item 7) should serve it as a subscription per track.
 3. **Canonical store at scale** — groundbreak seeds four events by hand; ingest a real slice of
    the Gutenberg text as Event deltas. Also: try the **ungoverned** posture (no operator) the
    README wants for epistolary forms — groundbreak's canon is still operator-governed with
