@@ -15,3 +15,4 @@ quarantine — are marked "loam §N" to keep the two numberings distinct.)
 | --- | ------- |
 | §1 | [Groundbreak: two sovereign stores over one text](spec/01-groundbreak.md) |
 | §2 | [Transition granularity: the unit of ground is the state change](spec/02-transitions.md) |
+| §3 | [Context-free ground: tracks are reads, frames are the reader's](spec/03-context-free-ground.md) |

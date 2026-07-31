@@ -1,5 +1,10 @@
 # §2 — Transition granularity: the unit of ground is the state change
 
+*(Amended by §3: track entities and the `onTrack`/`atSubject` templates described here left
+the ground — pre-assigning transitions to tracks was an interpretive frame applied at write
+time. The transition granularity itself, and all the telemetry, carry forward with tracks as
+read-time constructs.)*
+
 Supersedes §1's granularity decision. The unit of canonical ground is no longer the "narrated
 occurrence" with a prose summary — it is the **transition**: one entity per state change of one
 trackable aspect, arbitrarily many per passage, each independently assertable, pullable, and

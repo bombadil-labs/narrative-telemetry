@@ -1,10 +1,10 @@
 {
   "hyperschema": {
-    "name": "Track",
+    "name": "Chronicle",
     "alg": 1,
     "body": {
       "op": "group",
-      "key": "byTargetContext",
+      "key": { "const": "transitions" },
       "in": {
         "op": "select",
         "pred": { "hasPointer": { "targetEntity": { "var": "root" } } },
@@ -13,18 +13,12 @@
     }
   },
   "schema": {
-    "name": "Track",
+    "name": "Chronicle",
     "alg": 1,
     "props": {
       "transitions": { "all": { "order": { "byTimestamp": "asc" } } }
     },
     "default": { "pick": { "order": { "byTimestamp": "desc" } } }
   },
-  "roots": [
-    "track:jonathan.location",
-    "track:jonathan.disquiet",
-    "track:crucifix.possession",
-    "track:lucy.vitality",
-    "track:lucy.throat"
-  ]
+  "roots": ["char:jonathan", "char:lucy", "object:crucifix"]
 }

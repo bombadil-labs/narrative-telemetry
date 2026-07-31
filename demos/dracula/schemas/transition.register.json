@@ -20,25 +20,10 @@
       "to": { "pick": { "order": { "byTimestamp": "desc" } } },
       "occurredAt": { "pick": { "order": { "byTimestamp": "desc" } } },
       "source": { "pick": { "order": { "byTimestamp": "desc" } } },
-      "subject": { "pick": { "order": { "byTimestamp": "desc" } } },
-      "track": { "pick": { "order": { "byTimestamp": "desc" } } }
+      "subject": { "pick": { "order": { "byTimestamp": "desc" } } }
     },
     "default": { "pick": { "order": { "byTimestamp": "desc" } } }
   },
   "roots": ["event:jonathan-boards-train"],
-  "writable": ["aspect", "to", "occurredAt", "source"],
-  "mutations": {
-    "atSubject": {
-      "pointers": [
-        { "role": "transition", "at": { "arg": "event" }, "context": "subject" },
-        { "role": "subject", "at": { "arg": "subject" }, "context": "transitions" }
-      ]
-    },
-    "onTrack": {
-      "pointers": [
-        { "role": "transition", "at": { "arg": "event" }, "context": "track" },
-        { "role": "track", "at": { "arg": "track" }, "context": "transitions" }
-      ]
-    }
-  }
+  "writable": ["aspect", "to", "occurredAt", "source"]
 }

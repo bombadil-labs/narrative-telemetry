@@ -67,3 +67,25 @@ Learnings:
   track's previous transition, and a disputed *from* is a competing transition, not a field.
 - Current-state is a client-side fold in the demo; promoting it to a registered resolver
   (loam §22) is the natural next landing, alongside per-track irony as a served lens.
+
+## 2026-07-31 — Context-free ground; tracks become reads (spec §3)
+
+Myk's correction, and it cut deep: §2's `onTrack` pre-assigned transitions to track entities
+at write time — an interpretive frame smuggled into delta extraction, exactly what rhizomatic's
+context-freeness exists to prevent. Track entities left the ground the same day they entered
+it. The fix made the system smaller and more honest:
+
+- **The ground is one writable mutation + one `_claim` edge per transition.** The built-in
+  `_claim` has dynamic contexts, which dissolves the §2 static-template workaround — the
+  filing context at the subject IS the aspect, the author's own naming, a claim inside the
+  delta rather than an assignment to external structure.
+- **Tracks emerge at gather time.** The Subject reading groups `byTargetContext` and every
+  aspect becomes a property; the track was never a thing, only ever a read.
+- **The frame is provably the reader's.** A second reading (Chronicle, `const` group key)
+  bags flat what Subject splits — same store, same deltas, zero re-authoring, verified in the
+  groundbreak's new fifth proof. The algebra's group-key inventory
+  (`byTargetContext`/`byRole`/`const`) turns out to be the formal home of "interpretive
+  frame," which the README's "a reading is a Schema" promised and the demo now demonstrates.
+- Standing lesson for the parser work ahead: extraction must emit claims, never groupings.
+  Anything that looks like a stream, a thread, an arc, or a plot-line is a reading, and
+  readings are registered, per store, at read time.
