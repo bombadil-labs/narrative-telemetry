@@ -120,3 +120,30 @@ that substrate. Decisions and learnings:
 - The predecessor's rich vocabularies (discourse-mode event taxonomy, causal roles, absential
   lifecycle, certainty/awareness) are import candidates at their proper layers — TODO'd, not
   ported wholesale.
+
+## 2026-07-31 — PROTOTYPE-1 loop, rounds 1–2: what the external evaluator taught the model
+
+The ralph loop (PROTOTYPE.md): goal state judged by evaluator personas who see only the story,
+the guide, and the running system. Round 1 (Dr. Sullivan, literature instructor persona):
+4/4/4/3, no pass, one blocking defect — and every piece of feedback improved the *model*, not
+just the demo:
+
+- **The blocking defect was a modeling error dressed as a bug.** The guide's audit ritual
+  ("`_hex` identical everywhere") failed because `_hex` hashes the resolved view, and reader
+  views include their own ascriptions. The fix was doctrinal, not cosmetic: **the text is an
+  author distinct from the narrator** (the old repo's Author/Narrator split, rediscovered
+  under pressure), and the shared floor is an author-scoped Ground reading — whose view
+  really is byte-identical everywhere, now self-checked at the most-ascribed occurrence. The
+  occurrence-view hash legitimately differing per store became the guide's teaching moment.
+- **Convergence must be authored, never string luck.** Round 1 caught narrator diction under
+  the boy's key (verbatim-copied countersigns). Now a countersign is the boy's own voice plus
+  an explicit `concurs` claim; the divergence metric treats equal-or-concurs as closed; and
+  the report discloses plainly that readings — including the epiphany's collapse — are
+  authored annotations the system measures, not discoveries it makes. "Telemetry means the
+  measurement of a reading, not the automation of one."
+- **Discoverability is part of the instrument.** A queryable system nobody can enumerate is a
+  demo; the text now signs an `araby:catalog` and an Index reading lists subjects,
+  occurrences, aspects.
+- Persona evaluation earns its cost: the anchor errors (4 of 46 off by one paragraph at
+  dialogue boundaries), the unread Mangan's sister, and the "foolish blood" diction leak were
+  all things the builder read past. Round 2 in flight.
