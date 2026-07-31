@@ -1,6 +1,6 @@
 {
   "hyperschema": {
-    "name": "Transition",
+    "name": "Occurrence",
     "alg": 1,
     "body": {
       "op": "group",
@@ -13,17 +13,17 @@
     }
   },
   "schema": {
-    "name": "Transition",
+    "name": "Occurrence",
     "alg": 1,
     "props": {
-      "aspect": { "pick": { "order": { "byTimestamp": "desc" } } },
-      "to": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "description": { "pick": { "order": { "byTimestamp": "desc" } } },
       "occurredAt": { "pick": { "order": { "byTimestamp": "desc" } } },
       "source": { "pick": { "order": { "byTimestamp": "desc" } } },
-      "subject": { "pick": { "order": { "byTimestamp": "desc" } } }
+      "participants": { "all": { "order": { "byTimestamp": "asc" } } },
+      "ascriptions": { "all": { "order": { "byTimestamp": "asc" } } }
     },
     "default": { "pick": { "order": { "byTimestamp": "desc" } } }
   },
   "roots": ["event:jonathan-boards-train"],
-  "writable": ["aspect", "to", "occurredAt", "source"]
+  "writable": ["description", "occurredAt", "source"]
 }

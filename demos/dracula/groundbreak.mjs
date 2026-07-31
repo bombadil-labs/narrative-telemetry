@@ -1,28 +1,29 @@
-// Groundbreak — the first running narrative-telemetry system: context-free ground,
-// interpretive frames at read time.
+// Groundbreak — the first running narrative-telemetry system.
+// Occurrences are ground; state is ascription; characters are readers.
 //
 // Two sovereign stores over one text (*Dracula*):
 //   canon — the canonical stream (the text's ground, diarist-signed)
 //   mina  — Mina Harker's point-of-view store
 //
-// The unit of ground is the TRANSITION: one entity per state change, arbitrarily many per
-// passage, each independently assertable, pullable, and contestable. The ground is
-// CONTEXT-FREE: a transition claims only its own content — subject, new state, story time,
-// narrating entry. There are no track entities and no pre-assignment of transitions to
-// streams; a "track" is what a READING produces, at gather time, from the deltas themselves.
-// Two readings are registered over the same ground to prove the frame is the reader's:
-//   Subject   — group by the author's filing context (aspect): tracks emerge per aspect
-//   Chronicle — group under one constant property: the same deltas, bagged flat
+// The unit of ground is the OCCURRENCE: a thing that happened — description, participants,
+// story time, narrating entry. Occurrences make NO state claims. State lives in ASCRIPTIONS:
+// delta-only claims ("occurrence X moved subject Y's <aspect> to <value>") signed by whoever
+// is doing the reading — a critic, an analyst, or a CHARACTER. Characters are readers of the
+// text, functionally: epistemic divergence is which reader signed the ascription, and what
+// they had read when they signed it.
 //
-// Proves the model-in-one-breath on real machinery:
-//   1. PULL       — mina federates canonical transitions verbatim (hash-identical _hex)
-//   2. AUTHOR     — mina writes a private transition, signed by her key, with no canonical
-//                   correspondent (the Wormtongue move)
-//   3. IRONY GAP  — per-track set-difference (a read-time construct): canon \ mina at
-//                   lucy·throat is non-empty the moment canon learns something mina hasn't
-//   4. TWO TRUTHS — the same track resolves to different current states on different stores
-//   5. TWO FRAMES — Subject and Chronicle read the same ground into different shapes,
-//                   with zero re-authoring
+// Irony therefore decomposes into two species, both computed below:
+//   EXPOSURE GAP          — an occurrence one store holds and another hasn't pulled
+//   ASCRIPTION DIVERGENCE — both readers saw it; they disagree about what it changed
+//
+// Proves, on real machinery:
+//   1. PULL       — mina federates canonical occurrences verbatim (hash-identical _hex)
+//   2. ASCRIBE    — trajectories (jonathan·location) are reader-signed ascriptions joined to
+//                   ground occurrences; state is a fold over a reading, never stored
+//   3. TWO SPECIES — exposure gap at event:lucy-examined; ascription divergence at
+//                   char:lucy·vitality ("gravely ill" per Seward, "merely tired" per Mina)
+//   4. SIGNATURES — the diverging ascriptions verifiably carry different author keys
+//   5. TWO FRAMES — Subject and Chronicle read the same ground into different shapes
 //
 // Run: npm run groundbreak   (from the repo root, after npm install)
 
@@ -45,9 +46,9 @@ const HOMES = join(ROOT, "homes");
 
 // Fixed actor seeds so every run is reproducible; these sign claims, they are not operators.
 const SEEDS = {
-  jonathan: "1a".repeat(32), // Jonathan Harker — diarist of the opening chapters
-  seward: "2b".repeat(32), //   Dr. Seward — phonograph diarist; ground truth about Lucy
-  mina: "3c".repeat(32), //     Mina Harker — diarist, and the POV store's own voice
+  jonathan: "1a".repeat(32), // Jonathan Harker — diarist, and reader of his own days
+  seward: "2b".repeat(32), //   Dr. Seward — diarist; reader of Lucy's decline
+  mina: "3c".repeat(32), //     Mina Harker — diarist, and the POV store's own reader
 };
 
 // Distinct operator seeds per store — shared seeds would federate law (the village's rule 0.2).
@@ -105,49 +106,66 @@ async function register(base, token, spec) {
   if (!res.ok) throw new Error(`register failed: ${res.status} ${await res.text()}`);
 }
 
-// One transition = one entity, claimed context-free: scalars via the writable mutation, plus
-// one n-ary edge delta (_claim) whose filing context AT THE SUBJECT is the author's own naming
-// of the aspect — a claim inside the delta, not an assignment to any external structure.
-async function claimTransition(base, token, t) {
+// GROUND: an occurrence claims only its own content — no state, no aspects. Scalars via the
+// writable mutation; each participant is one n-ary edge delta.
+async function claimOccurrence(base, token, o) {
   await gql(
     base,
     token,
-    `mutation { transition(entity: "${t.id}", aspect: "${t.aspect}", to: "${t.to}",
-        occurredAt: "${t.occurredAt}", source: "${t.source}") { aspect } }`,
+    `mutation { occurrence(entity: "${o.id}", description: "${o.description}",
+        occurredAt: "${o.occurredAt}", source: "${o.source}") { occurredAt } }`,
   );
-  await gql(
+  for (const p of o.participants) {
+    await gql(
+      base,
+      token,
+      `mutation { _claim(pointers: [
+          { role: "occurrence", at: "${o.id}", context: "participants" },
+          { role: "participant", at: "${p}", context: "occurrences" }
+        ]) { delta } }`,
+    );
+  }
+}
+
+// READING: an ascription is one delta — "this occurrence moved this subject's <aspect> to
+// <value>" — signed by whoever is reading. Returns the delta hash so authorship is auditable.
+async function ascribe(base, token, a) {
+  const data = await gql(
     base,
     token,
     `mutation { _claim(pointers: [
-        { role: "transition", at: "${t.id}", context: "subject" },
-        { role: "subject", at: "${t.subject}", context: "${t.aspect}" }
+        { role: "subject", at: "${a.subject}", context: "${a.aspect}" },
+        { role: "occurrence", at: "${a.occurrence}", context: "ascriptions" },
+        { role: "aspect", value: "${a.aspect}" },
+        { role: "to", value: "${a.to}" }
       ]) { delta } }`,
   );
+  return data._claim.delta;
 }
 
-// A track is a READ: the Subject reading's property for one aspect at one subject.
+// A track is a READ: one aspect's ascriptions at one subject, joined to ground for story time.
 async function readTrack(base, token, subjectId, aspect) {
   const data = await gql(base, token, `{ subject(entity: "${subjectId}") { ${aspect} } }`);
-  return data.subject[aspect] ?? [];
+  const entries = data.subject[aspect] ?? [];
+  const joined = [];
+  for (const e of entries) {
+    const { occurrence } = await gql(base, token,
+      `{ occurrence(entity: "${e.occurrence}") { occurredAt } }`);
+    joined.push({ ...e, occurredAt: occurrence.occurredAt });
+  }
+  return joined.sort((x, y) => (x.occurredAt < y.occurredAt ? -1 : 1));
 }
 
-// Current state of a track on a store: the transition latest by occurredAt (ties: list order).
-async function currentState(base, token, subjectId, aspect) {
-  let latest;
-  for (const id of await readTrack(base, token, subjectId, aspect)) {
-    const { transition } = await gql(base, token, `{ transition(entity: "${id}") { to occurredAt } }`);
-    if (!latest || transition.occurredAt >= latest.occurredAt) latest = transition;
-  }
-  return latest?.to;
-}
+const currentState = async (base, token, subjectId, aspect) =>
+  (await readTrack(base, token, subjectId, aspect)).at(-1)?.to;
 
 // Story deltas only: claims pointing at narrative entities. Genesis, grants, and registrations
 // are each store's own law, not narrative ground — counting them would flatter the metrics.
 const STORY = /^(event|char|object):/;
 const isStory = (d) =>
   d.claims.pointers.some((p) => p.target?.kind === "entity" && STORY.test(p.target.entity.id));
-const storyIds = async (store) =>
-  new Set((await store.backend.deltasSince(new Set())).filter(isStory).map((d) => d.id));
+const storyDeltas = async (store) =>
+  (await store.backend.deltasSince(new Set())).filter(isStory);
 const diff = (a, b) => [...a].filter((x) => !b.has(x));
 
 // Fresh ground every run.
@@ -155,51 +173,67 @@ rmSync(HOMES, { recursive: true, force: true });
 
 const canon = await openStore("canon");
 const mina = await openStore("mina");
-for (const file of ["transition.register.json", "subject.register.json", "chronicle.register.json"]) {
+for (const file of ["occurrence.register.json", "subject.register.json", "chronicle.register.json"]) {
   const spec = JSON.parse(readFileSync(join(ROOT, "schemas", file), "utf8"));
   await register(canon.base, opToken("canon"), spec);
   await register(mina.base, opToken("mina"), spec); // each sovereign store carries its own readings
 }
 
-console.log("— act 1: the text lays its ground, one transition per state change —");
-const j = (id, aspect, to, occurredAt, source) => ({
-  id, subject: "char:jonathan", aspect, to, occurredAt, source,
-});
-const jonathanGround = [
-  // six location transitions from two dated entries
-  j("event:jonathan-boards-train", "location",
-    "aboard the 8:35 P.M. train out of Munich", "1893-05-01", "jonathan-journal:1893-05-03"),
-  j("event:jonathan-reaches-vienna", "location", "Vienna", "1893-05-02", "jonathan-journal:1893-05-03"),
-  j("event:jonathan-reaches-klausenburgh", "location",
-    "Klausenburgh, the Hotel Royale", "1893-05-02", "jonathan-journal:1893-05-03"),
-  j("event:jonathan-reaches-bistritz", "location",
-    "Bistritz, the Golden Krone", "1893-05-03", "jonathan-journal:1893-05-03"),
-  j("event:jonathan-reaches-borgo-pass", "location",
-    "the Borgo Pass, by coach", "1893-05-05", "jonathan-journal:1893-05-05"),
-  j("event:jonathan-enters-castle", "location",
-    "the courtyard of Castle Dracula", "1893-05-05", "jonathan-journal:1893-05-05"),
-  // three disquiet transitions, a different aspect of the same subject
-  j("event:jonathan-grows-curious", "disquiet",
-    "curious — queer dreams, paprika, a country of strangers", "1893-05-04", "jonathan-journal:1893-05-04"),
-  j("event:jonathan-grows-uneasy", "disquiet",
-    "uneasy — the landlady begs him not to go", "1893-05-04", "jonathan-journal:1893-05-04"),
-  j("event:jonathan-grows-afraid", "disquiet",
-    "afraid — wolves howling, blue flames on the pass", "1893-05-05", "jonathan-journal:1893-05-05"),
+console.log("— act 1: the text lays its ground — occurrences, with no state claims at all —");
+const journey = [
+  ["event:jonathan-boards-train", "Left Munich at 8:35 P.M.", "1893-05-01", "jonathan-journal:1893-05-03"],
+  ["event:jonathan-reaches-vienna", "Vienna early next morning", "1893-05-02", "jonathan-journal:1893-05-03"],
+  ["event:jonathan-reaches-klausenburgh", "Stopped a night at the Hotel Royale in Klausenburgh", "1893-05-02", "jonathan-journal:1893-05-03"],
+  ["event:jonathan-reaches-bistritz", "Arrived at Bistritz, the Golden Krone", "1893-05-03", "jonathan-journal:1893-05-03"],
+  ["event:jonathan-dreams", "Queer dreams all night; paprika, and a dog howling", "1893-05-04", "jonathan-journal:1893-05-04"],
+  ["event:landlady-warns", "The landlady begged him not to go, and hung a crucifix at his neck", "1893-05-04", "jonathan-journal:1893-05-04"],
+  ["event:jonathan-reaches-borgo-pass", "The coach came to the Borgo Pass in the dark", "1893-05-05", "jonathan-journal:1893-05-05"],
+  ["event:wolves-and-flames", "Wolves howled about the caleche; blue flames burned by the road", "1893-05-05", "jonathan-journal:1893-05-05"],
+  ["event:jonathan-enters-castle", "The caleche halted in the courtyard of a vast ruined castle", "1893-05-05", "jonathan-journal:1893-05-05"],
 ];
-for (const t of jonathanGround) await claimTransition(canon.base, tok("jonathan", "canon"), t);
-// objects have trajectories too
-await claimTransition(canon.base, tok("jonathan", "canon"), {
-  id: "event:crucifix-given", subject: "object:crucifix", aspect: "possession",
-  to: "worn at Jonathan's neck, the landlady's gift",
-  occurredAt: "1893-05-04", source: "jonathan-journal:1893-05-04",
+for (const [id, description, occurredAt, source] of journey) {
+  await claimOccurrence(canon.base, tok("jonathan", "canon"), {
+    id, description, occurredAt, source,
+    participants: id === "event:landlady-warns" ? ["char:jonathan", "object:crucifix"] : ["char:jonathan"],
+  });
+}
+// Mina is a diarist of this novel too: her Whitby entry is ground, signed by her key.
+await claimOccurrence(canon.base, tok("mina", "canon"), {
+  id: "event:lucy-walks-asleep",
+  description: "Found Lucy on the East Cliff at moonrise, asleep and breathing heavily; she was tired all morning",
+  occurredAt: "1893-08-11", source: "mina-journal:1893-08-11",
+  participants: ["char:lucy", "char:mina"],
 });
-console.log(`  ${jonathanGround.length + 1} transitions, 2 subjects, 3 aspects, 3 dated entries`);
+console.log(`  ${journey.length + 1} occurrences, 0 state claims — the ground says what happened, not what it meant`);
 
-console.log("— act 2: PULL — Mina federates the canonical ground verbatim —");
+console.log("— act 2: readers read — ascriptions, signed, citing the ground —");
+// Jonathan reads his own days: location and disquiet are HIS readings of the occurrences.
+const jAscriptions = [
+  ["event:jonathan-boards-train", "location", "aboard the 8:35 train out of Munich"],
+  ["event:jonathan-reaches-vienna", "location", "Vienna"],
+  ["event:jonathan-reaches-klausenburgh", "location", "Klausenburgh, the Hotel Royale"],
+  ["event:jonathan-reaches-bistritz", "location", "Bistritz, the Golden Krone"],
+  ["event:jonathan-reaches-borgo-pass", "location", "the Borgo Pass"],
+  ["event:jonathan-enters-castle", "location", "the courtyard of Castle Dracula"],
+  ["event:jonathan-dreams", "disquiet", "curious — a country of strangers"],
+  ["event:landlady-warns", "disquiet", "uneasy — why beg a stranger to stay?"],
+  ["event:wolves-and-flames", "disquiet", "afraid"],
+];
+for (const [occurrence, aspect, to] of jAscriptions) {
+  await ascribe(canon.base, tok("jonathan", "canon"), {
+    subject: "char:jonathan", occurrence, aspect, to,
+  });
+}
+await ascribe(canon.base, tok("jonathan", "canon"), {
+  subject: "object:crucifix", occurrence: "event:landlady-warns",
+  aspect: "possession", to: "worn at Jonathan's neck",
+});
+
+console.log("— act 3: PULL — Mina federates the canonical ground verbatim —");
 await pullFrom(mina.gateway, canon.base, opToken("canon"));
-const q = `{ transition(entity: "event:jonathan-enters-castle") { to _hex } }`;
-const onCanon = (await gql(canon.base, opToken("canon"), q)).transition;
-const onMina = (await gql(mina.base, opToken("mina"), q)).transition;
+const q = `{ occurrence(entity: "event:jonathan-enters-castle") { description _hex } }`;
+const onCanon = (await gql(canon.base, opToken("canon"), q)).occurrence;
+const onMina = (await gql(mina.base, opToken("mina"), q)).occurrence;
 console.log(`  canon _hex: ${onCanon._hex}`);
 console.log(`  mina  _hex: ${onMina._hex}`);
 console.log(
@@ -208,65 +242,69 @@ console.log(
     : "  ✗ MISMATCH",
 );
 const trajectory = await readTrack(mina.base, opToken("mina"), "char:jonathan", "location");
-console.log(`  jonathan·location, read off Mina's store (${trajectory.length} steps):`);
-for (const id of trajectory) {
-  const { transition } = await gql(mina.base, opToken("mina"),
-    `{ transition(entity: "${id}") { to occurredAt } }`);
-  console.log(`    ${transition.occurredAt}  →  ${transition.to}`);
-}
+console.log(`  jonathan·location — Jonathan's reading, replayed off Mina's store (${trajectory.length} steps):`);
+for (const step of trajectory) console.log(`    ${step.occurredAt}  →  ${step.to}`);
 
-console.log("— act 3: canon moves on (Seward's diary: what is really happening to Lucy) —");
-await claimTransition(canon.base, tok("seward", "canon"), {
-  id: "event:lucy-loses-color", subject: "char:lucy", aspect: "vitality",
-  to: "pale, gums bloodless, worn out", occurredAt: "1893-09-02", source: "seward-diary:1893-09-03",
+console.log("— act 4: canon moves on; two readers read Lucy —");
+// Ground: Seward's examination is an occurrence Mina has NOT pulled (she hasn't read his diary).
+await claimOccurrence(canon.base, tok("seward", "canon"), {
+  id: "event:lucy-examined",
+  description: "Examined Lucy by lamplight; terribly pale, gums bloodless; two small marks at the throat",
+  occurredAt: "1893-09-02", source: "seward-diary:1893-09-03",
+  participants: ["char:lucy", "char:seward"],
 });
-await claimTransition(canon.base, tok("seward", "canon"), {
-  id: "event:lucy-throat-marked", subject: "char:lucy", aspect: "throat",
-  to: "two small punctures over the jugular", occurredAt: "1893-09-03", source: "seward-diary:1893-09-03",
+// Seward reads his examination:
+const sewardVitality = await ascribe(canon.base, tok("seward", "canon"), {
+  subject: "char:lucy", occurrence: "event:lucy-examined",
+  aspect: "vitality", to: "gravely ill — bloodless without visible loss",
+});
+await ascribe(canon.base, tok("seward", "canon"), {
+  subject: "char:lucy", occurrence: "event:lucy-examined",
+  aspect: "throat", to: "two small punctures over the jugular",
+});
+// Mina reads the SAME ground she holds — the sleepwalking occurrence — and signs her own view:
+const minaVitality = await ascribe(mina.base, tok("mina", "mina"), {
+  subject: "char:lucy", occurrence: "event:lucy-walks-asleep",
+  aspect: "vitality", to: "merely tired — too much excitement at Whitby",
 });
 
-console.log("— act 4: AUTHOR — Mina writes what she believes, in her own store, her own key —");
-await claimTransition(mina.base, tok("mina", "mina"), {
-  id: "event:lucy-seems-tired", subject: "char:lucy", aspect: "vitality",
-  to: "merely tired — too much excitement at Whitby", occurredAt: "1893-09-02", source: "mina-journal:1893-09-02",
-});
-
-console.log("— act 5: the telemetry reads off the ground — tracks are reads, frames are the reader's —");
-const perTrack = {};
-for (const [subjectId, aspect] of [
-  ["char:lucy", "throat"],
-  ["char:lucy", "vitality"],
-  ["char:jonathan", "location"],
-]) {
-  const c = new Set(await readTrack(canon.base, opToken("canon"), subjectId, aspect));
-  const m = new Set(await readTrack(mina.base, opToken("mina"), subjectId, aspect));
-  const key = `${subjectId}·${aspect}`;
-  perTrack[key] = { gap: diff(c, m).length, priv: diff(m, c).length };
-  console.log(
-    `  ${key}: canon ${c.size} / mina ${m.size} — irony gap ${perTrack[key].gap}, ` +
-      `private ${perTrack[key].priv}`,
+console.log("— act 5: the telemetry — irony decomposes into two species —");
+// Species 1: EXPOSURE GAP — occurrences one store holds that the other hasn't pulled.
+const occIds = (deltas) =>
+  new Set(
+    deltas
+      .filter((d) => d.claims.pointers.some((p) => p.role === "participant"))
+      .map((d) => d.claims.pointers.find((p) => p.target?.kind === "entity" && p.target.entity.id.startsWith("event:"))?.target.entity.id)
+      .filter(Boolean),
   );
-}
+const canonStory = await storyDeltas(canon);
+const minaStory = await storyDeltas(mina);
+const exposureGap = diff(occIds(canonStory), occIds(minaStory));
+console.log(`  exposure gap (occurrences in canon Mina hasn't pulled): ${JSON.stringify(exposureGap)}`);
+
+// Species 2: ASCRIPTION DIVERGENCE — both stores read Lucy's vitality; the readings disagree.
 const lucyOnCanon = await currentState(canon.base, opToken("canon"), "char:lucy", "vitality");
 const lucyOnMina = await currentState(mina.base, opToken("mina"), "char:lucy", "vitality");
-console.log(`  one track, two stores, two truths (char:lucy·vitality, current state):`);
+console.log(`  ascription divergence (char:lucy·vitality, current state per store):`);
 console.log(`    canon → "${lucyOnCanon}"`);
 console.log(`    mina  → "${lucyOnMina}"`);
 
-// Two frames, one ground: the Chronicle reading bags what the Subject reading splits —
-// same store, same deltas, zero re-authoring.
+// The divergence IS the signatures: the two ascriptions carry different author keys.
+const authorOf = (deltas, id) => deltas.find((d) => d.id === id)?.claims.author;
+const sewardKey = authorOf(canonStory, sewardVitality);
+const minaKey = authorOf(minaStory, minaVitality);
+console.log(`  who signed the diverging readings:`);
+console.log(`    canon's vitality ascription: ${sewardKey?.slice(0, 28)}… (Seward)`);
+console.log(`    mina's  vitality ascription: ${minaKey?.slice(0, 28)}… (Mina)`);
+
+// Two frames, one ground: Subject splits by aspect; Chronicle bags flat. Same deltas.
 const subj = (await gql(canon.base, opToken("canon"),
-  `{ subject(entity: "char:jonathan") { location disquiet } }`)).subject;
+  `{ subject(entity: "char:jonathan") { occurrences location disquiet } }`)).subject;
 const chron = (await gql(canon.base, opToken("canon"),
   `{ chronicle(entity: "char:jonathan") { transitions } }`)).chronicle;
 console.log(`  two frames, one ground (char:jonathan):`);
-console.log(`    Subject reading   → location ${subj.location.length} + disquiet ${subj.disquiet.length}`);
-console.log(`    Chronicle reading → transitions ${chron.transitions.length}, bagged flat`);
-
-const canonIds = await storyIds(canon);
-const minaIds = await storyIds(mina);
-console.log(`  whole-ground: irony gap ${diff(canonIds, minaIds).length} delta(s), ` +
-  `Mina's private ground ${diff(minaIds, canonIds).length} delta(s)`);
+console.log(`    Subject reading   → occurrences ${subj.occurrences.length} + location ${subj.location.length} + disquiet ${subj.disquiet.length}`);
+console.log(`    Chronicle reading → ${chron.transitions.length} claims, bagged flat`);
 
 await mina.handle.close();
 await mina.gateway.close();
@@ -276,10 +314,10 @@ await canon.gateway.close();
 const ok =
   onCanon._hex === onMina._hex &&
   trajectory.length === 6 &&
-  perTrack["char:lucy·throat"].gap > 0 && // the reader knows about the punctures; Mina doesn't
-  perTrack["char:lucy·throat"].priv === 0 &&
-  perTrack["char:lucy·vitality"].priv > 0 && // Mina's belief has no canonical correspondent
-  lucyOnCanon !== lucyOnMina && // same track, divergent current state
-  chron.transitions.length === subj.location.length + subj.disquiet.length; // frames, not facts, differ
+  exposureGap.length === 1 &&
+  exposureGap[0] === "event:lucy-examined" && // she hasn't read Seward's diary
+  lucyOnCanon !== lucyOnMina && // same character, two readers, two states
+  sewardKey !== undefined && minaKey !== undefined && sewardKey !== minaKey && // divergence is signatures
+  chron.transitions.length === subj.occurrences.length + subj.location.length + subj.disquiet.length;
 console.log(ok ? "\ngroundbreak: ALL PROOFS HOLD" : "\ngroundbreak: PROOF FAILED");
 process.exit(ok ? 0 : 1);

@@ -16,6 +16,7 @@
     "name": "Subject",
     "alg": 1,
     "props": {
+      "occurrences": { "all": { "order": { "byTimestamp": "asc" } } },
       "location": { "all": { "order": { "byTimestamp": "asc" } } },
       "disquiet": { "all": { "order": { "byTimestamp": "asc" } } },
       "vitality": { "all": { "order": { "byTimestamp": "asc" } } },

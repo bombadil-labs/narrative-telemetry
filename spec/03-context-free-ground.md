@@ -1,5 +1,9 @@
 # §3 — Context-free ground: tracks are reads, frames are the reader's
 
+*(Amended by §4: the transition itself left the ground too — "this occurrence changed X" is a
+reading's claim. Ground is now occurrences; state ascriptions are reader-signed deltas. The
+read-time-frames machinery here carries forward unchanged.)*
+
 Amends §2. The transition granularity stands — one entity per state change, arbitrarily many
 per passage — but §2's **track entities leave the ground**. Pre-assigning a transition to
 `track:<subject>.<aspect>` at write time was an interpretive frame smuggled into delta

@@ -1,11 +1,14 @@
 # Dracula — the worked corpus
 
-The first running narrative-telemetry system (spec §1–§3). Two sovereign stores over one text:
-`canon` (the text's ground, diarist-signed) and `mina` (Mina Harker's point-of-view store). The
-unit of ground is the **transition** — one entity per state change, arbitrarily many per
-passage — and the ground is **context-free**: a transition claims only its own content. There
-are no track entities; a *track* is what a reading produces at gather time, and two rival
-readings are registered to prove the frame is the reader's.
+The first running narrative-telemetry system (spec §1–§4). Two sovereign stores over one text:
+`canon` (the text's ground, diarist-signed) and `mina` (Mina Harker's point-of-view store).
+
+The model: **occurrences are ground, state is ascription, characters are readers.** An
+occurrence claims only that something happened (description, participants, story time,
+narrating entry). An ascription — one delta, no entity — is a reader's claim that an
+occurrence moved a subject's aspect to a value, signed by whoever is reading: a critic, an
+analyst, or a character. Epistemic divergence is which reader signed, over what ground they
+had pulled.
 
 ```sh
 npm run groundbreak
@@ -13,24 +16,26 @@ npm run groundbreak
 
 Five acts, self-checking (exits non-zero unless every proof holds):
 
-1. **ground** — ten transitions (two subjects, three aspects, three dated entries), each a
-   writable-scalars call plus one n-ary `_claim` edge whose filing context at the subject is
-   the author's own aspect naming
-2. **pull** — Mina federates canon verbatim: the same transition resolves to the same `_hex`
-   on both stores, and jonathan·location replays six steps off *her* store
-3. **canon moves on** — Seward's diary: `lucy·vitality` fails, `lucy·throat` is marked
-4. **author** — Mina writes her own transition in her store, under her key: "merely tired"
-5. **telemetry** — per-track set-differences localize the irony (lucy·throat: canon 1,
-   mina 0); the same track resolves to two current states on two stores; and the Subject and
-   Chronicle readings frame the same ground two ways (location 6 + disquiet 3 vs. 9 bagged
-   flat) with zero re-authoring
+1. **ground** — ten occurrences, zero state claims; diarists sign their own entries (Mina's
+   Whitby entry is ground under Mina's key — epistolary provenance from delta one)
+2. **readers read** — Jonathan ascribes location and disquiet to his own days; the crucifix
+   gets a possession ascription (objects have trajectories too)
+3. **pull** — Mina federates canon verbatim (hash-identical `_hex`); jonathan·location
+   replays six steps off her store, ascriptions joined to ground at read time
+4. **two readers read Lucy** — Seward's examination lands as ground Mina hasn't pulled; he
+   reads it as "gravely ill"; she reads her own sleepwalking entry as "merely tired"
+5. **telemetry** — irony decomposes into its two species: the **exposure gap**
+   (`event:lucy-examined` — she hasn't read Seward's diary) and **ascription divergence**
+   (char:lucy·vitality, two current states, provably two author keys); plus the two-frames
+   proof (Subject splits what Chronicle bags, same deltas)
 
 Layout:
 
-- `schemas/transition.register.json` — the transition entity: `aspect`, `to`, `occurredAt`
-  (story time), `source` (dated-entry discourse position)
-- `schemas/subject.register.json` — the **Subject reading**: groups a subject's deltas by the
-  author's filing context, so tracks emerge per aspect at read time
+- `schemas/occurrence.register.json` — the ground: `description`, `occurredAt` (story time),
+  `source` (dated-entry discourse position), participants; ascriptions visible from the
+  ground they cite
+- `schemas/subject.register.json` — the **Subject reading**: a subject's occurrences plus
+  per-aspect ascription tracks, grouped by the readers' filing contexts
 - `schemas/chronicle.register.json` — the **Chronicle reading**: the same gather under a
   `const` group key — one ground, another frame
 - `groundbreak.mjs` — the five acts

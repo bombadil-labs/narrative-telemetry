@@ -89,3 +89,34 @@ it. The fix made the system smaller and more honest:
 - Standing lesson for the parser work ahead: extraction must emit claims, never groupings.
   Anything that looks like a stream, a thread, an arc, or a plot-line is a reading, and
   readings are registered, per store, at read time.
+
+## 2026-07-31 — Occurrences and ascriptions; characters are readers (spec §4)
+
+Myk's third cut, informed by the predecessor repo (mbilokonsky/narrative-telemetry): events
+are just "things that happened" — even state transitions are interpretation. The predecessor
+had discovered this empirically (its event effects migrated from the Event type into the
+Reading layer over the project's life; its extract.ts was caught stuffing transition
+descriptions into a version field — state-claims wanting out of the ground). What it lacked
+was a substrate that made the migration cheap and could handle epistemic divergence; loam is
+that substrate. Decisions and learnings:
+
+- **Ground = occurrences** (description, occurredAt, source, participants — no aspects, no
+  `to`). **State = ascriptions**: delta-only claims citing an occurrence, filing at the
+  subject under the aspect, signed by whoever is reading. Verified by probe first: loam's
+  GraphQL renders multi-pointer claims as object candidates (`{occurrence, to, aspect}`) in
+  `all` props, so ascriptions need no minted entity. One loam quirk: `_claim` requires every
+  entity pointer to carry a context — which turned out to be a feature (the occurrence
+  pointer's `ascriptions` context makes readings visible from the ground they cite).
+- **Characters are readers, functionally** (Myk's framing). A character = a store of pulled
+  ground + ascriptions under their key. Mina misreading Lucy and a formalist reading Joyce
+  are the same operation. *Dracula* dramatizes this in-plot — the cast reads each other's
+  diaries — which retroactively makes it an even better first corpus than we knew.
+- **Irony decomposed into two species** with different mechanics: exposure gap (occurrence
+  diff — she hasn't read Seward's diary) vs. ascription divergence (same subject·aspect,
+  different signatures). The old whole-ground set-difference conflated these.
+- **The regress ends at provenance, not at a ground floor.** Occurrence extraction is also
+  interpretation; the system layers by author and resolves by trust posture instead of
+  deciding where interpretation begins.
+- The predecessor's rich vocabularies (discourse-mode event taxonomy, causal roles, absential
+  lifecycle, certainty/awareness) are import candidates at their proper layers — TODO'd, not
+  ported wholesale.

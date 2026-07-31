@@ -5,20 +5,27 @@ enters `spec/` with a provenance footer. Ordered roughly by dependency, not prio
 
 ## v1 spine — the *Dracula* demo
 
-1. ~~Decide canonical Event granularity~~ — **done, three times (spec §1 → §2 → §3):** the
-   unit of ground is the transition — one entity per state change, arbitrarily many per
-   passage, context-free; tracks are reads (the Subject reading's per-aspect properties),
-   never ground.
-2. ~~First register files~~ — **done (spec §2, §3):**
-   `demos/dracula/schemas/{transition,subject,chronicle}.register.json`, exercised by
+1. ~~Decide the unit of ground~~ — **done, four times (spec §1 → §2 → §3 → §4):** ground is
+   the occurrence (a thing that happened — no state claims); state is ascription, a
+   reader-signed delta citing ground; characters are readers; tracks and frames are reads.
+2. ~~First register files~~ — **done (spec §2–§4):**
+   `demos/dracula/schemas/{occurrence,subject,chronicle}.register.json`, exercised by
    `npm run groundbreak`.
-2a. **Current-state resolver** — the state-of-a-track fold (latest transition by `occurredAt`)
-   runs client-side in the demo; promote it to a registered resolver (loam §22) so stores
-   serve `state` directly.
-2b. **Per-track irony as a served lens** — the per-track set-difference is computed in-process;
-   the confluence store (item 7) should serve it as a subscription per track.
+2a. **Current-state resolver** — the state-of-a-track fold (latest ascription by ground
+   `occurredAt`) runs client-side in the demo; promote it to a registered resolver (loam §22)
+   so stores serve `state` directly.
+2b. **Per-track irony as a served lens** — both irony species (exposure gap, ascription
+   divergence) are computed in-process; the confluence store (item 7) should serve them as
+   subscriptions.
 2c. **A `byRole` reading** — the third group key is unexercised; a reading that files by the
    role the subject plays would show frames diverging on more than flat-vs-split.
+2d. **In-store superposition + trust resolution** — the demo shows divergence across stores;
+   show it within one store (federate Mina's ascriptions into a confluence store, resolve
+   `vitality` under different `loam:trust` postures — the unreliable-narrator index's seed).
+2e. **Import predecessor vocabularies at their proper layers** — discourse-mode taxonomy
+   (dialogue / free-indirect / narrator-commentary / flashback / ekphrasis) as
+   occurrence-level claims; causal roles (primary/contributing/catalytic/opposing…),
+   absential type+lifecycle, and certainty/awareness as ascription-level vocabularies.
 3. **Canonical store at scale** — groundbreak seeds four events by hand; ingest a real slice of
    the Gutenberg text as Event deltas. Also: try the **ungoverned** posture (no operator) the
    README wants for epistolary forms — groundbreak's canon is still operator-governed with
