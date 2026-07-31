@@ -23,8 +23,10 @@ renders it; the whole thing deploys from `docs/` on GitHub Pages.
   distinct hues); light-mode contrast warnings discharged by direct labels and the table
   view; identity never color-alone (every chip pairs a swatch with a text label); dark mode
   is selected steps, not an automatic flip; single axis.
-- **Deploy**: GitHub Pages → serve from `/docs` on the default branch (enable once this
-  branch merges; no build step, no Actions required).
+- **Deploy**: `.github/workflows/pages.yml` — on push to main (docs/** paths), the official
+  Pages actions upload `docs/` and deploy; `configure-pages` runs with `enablement: true`, so
+  the first run creates the Pages site itself. No manual settings step; also runnable via
+  workflow_dispatch.
 
 **Provenance.** Landed on `claude/rhizomatic-project-setup-5m45wf` (pre-PR). Lives in
 `docs/` (index.html, reading.html, style.css, data/) and the export step of
