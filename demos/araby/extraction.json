@@ -244,7 +244,7 @@
   },
   {
    "id": "event:market-errand",
-   "description": "On Saturday evenings the boy carries parcels for his aunt through the flaring streets, jostled by drunken men and bargaining women, amid curses of labourers, shrill litanies of shop-boys and the nasal chanting of street-singers.",
+   "description": "On Saturday evenings the boy carries parcels for his aunt through the flaring streets, jostled by drunken men and bargaining women, amid curses of labourers, shrill litanies of shop-boys and the nasal chanting of street-singers singing a come-all-you about O'Donovan Rossa or a ballad about the troubles in our native land.",
    "ordinal": 11,
    "source": "araby:p05",
    "participants": [
@@ -383,7 +383,7 @@
    "id": "event:reminds-uncle",
    "description": "On Saturday morning the boy reminds his uncle that he wishes to go to the bazaar in the evening; the uncle, fussing at the hallstand for the hat-brush, answers curtly: 'Yes, boy, I know.'",
    "ordinal": 24,
-   "source": "araby:p13",
+   "source": "araby:p13-p14",
    "participants": [
     "char:boy",
     "char:uncle",
@@ -428,7 +428,7 @@
    "id": "event:mrs-mercer-leaves",
    "description": "Mrs Mercer stands up to go after eight o'clock, sorry she cannot wait, as the night air is bad for her; the boy begins to walk up and down the room, clenching his fists, and his aunt says, 'I'm afraid you may put off your bazaar for this night of Our Lord.'",
    "ordinal": 28,
-   "source": "araby:p18",
+   "source": "araby:p17-p18",
    "participants": [
     "char:mrs-mercer",
     "char:boy",
@@ -450,7 +450,7 @@
    "id": "event:asks-for-money",
    "description": "Midway through his dinner the boy asks the uncle for the money to go to the bazaar; the uncle has forgotten, and says, 'The people are in bed and after their first sleep now.'",
    "ordinal": 30,
-   "source": "araby:p20",
+   "source": "araby:p19-p20",
    "participants": [
     "char:boy",
     "char:uncle"
@@ -460,7 +460,7 @@
    "id": "event:aunt-intervenes",
    "description": "The boy does not smile; his aunt says energetically, 'Can't you give him the money and let him go? You've kept him late enough as it is.'",
    "ordinal": 31,
-   "source": "araby:p22",
+   "source": "araby:p21-p22",
    "participants": [
     "char:aunt",
     "char:uncle",
@@ -557,7 +557,7 @@
    "id": "event:english-banter",
    "description": "At the door of the stall a young lady is talking and laughing with two young gentlemen; the boy remarks their English accents and listens vaguely to their conversation, which ends 'O, there's a ... fib!'",
    "ordinal": 40,
-   "source": "araby:p26",
+   "source": "araby:p26-p32",
    "participants": [
     "char:young-lady",
     "char:two-gentlemen",
@@ -579,7 +579,7 @@
    "id": "event:no-thank-you",
    "description": "Looking humbly at the great jars that stand like eastern guards at either side of the dark entrance to the stall, the boy murmurs, 'No, thank you.'",
    "ordinal": 42,
-   "source": "araby:p33",
+   "source": "araby:p33-p34",
    "participants": [
     "char:boy",
     "char:young-lady",
@@ -982,6 +982,18 @@
     "subject": "char:aunt",
     "aspect": "faith",
     "to": "'this night of Our Lord': piety meters even a bazaar; the household calendar is liturgical before it is commercial"
+   },
+   {
+    "occurrence": "event:uncle-proverb",
+    "subject": "char:uncle",
+    "aspect": "illusion",
+    "to": "the household's own cheapened Orientalism: 'The Arab's Farewell to his Steed' recited over a forgotten florin \u2014 the East as parlour piece, at home before the boy ever boards the train"
+   },
+   {
+    "occurrence": "event:market-errand",
+    "subject": "place:market-streets",
+    "aspect": "freedom",
+    "to": "a come-all-you about O'Donovan Rossa in the market din: nationalist memory hawked alongside pig-cheeks \u2014 the political frame the boy's romance screens out"
    }
   ]
  }

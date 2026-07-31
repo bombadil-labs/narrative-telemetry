@@ -17,3 +17,4 @@ quarantine — are marked "loam §N" to keep the two numberings distinct.)
 | §2 | [Transition granularity: the unit of ground is the state change](spec/02-transitions.md) |
 | §3 | [Context-free ground: tracks are reads, frames are the reader's](spec/03-context-free-ground.md) |
 | §4 | [Occurrences and ascriptions: characters are readers](spec/04-occurrences-and-ascriptions.md) |
+| §5 | [PROTOTYPE-1: the Araby pipeline, externally verified](spec/05-araby-prototype.md) |

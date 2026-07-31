@@ -321,6 +321,16 @@ const report = await buildReport({ extraction, aspects, stores, gql, opToken });
 writeFileSync(join(OUT, "report.md"), report);
 console.log(`araby: output/report.md written`);
 
+// Paragraph-numbered text: occurrence, ascription, and Joyce's sentence on one screen.
+const raw = readFileSync(join(ROOT, "corpus", "araby.txt"), "utf8");
+const paras = raw.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && p !== "ARABY");
+writeFileSync(
+  join(OUT, "araby-numbered.txt"),
+  "ARABY (paragraph-numbered — anchors like araby:p07 refer to these numbers)\n\n" +
+    paras.map((p, i) => `[p${String(i + 1).padStart(2, "0")}] ${p}`).join("\n\n") + "\n",
+);
+console.log(`araby: output/araby-numbered.txt written (${paras.length} paragraphs)`);
+
 if (SERVE_MODE) {
   console.log("araby: serving —");
   for (const [name, cfg] of Object.entries(STORES)) {

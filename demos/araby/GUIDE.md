@@ -96,6 +96,38 @@ readings differ because different keys signed them — the boy, the narrator, an
 are cryptographically distinct authors, and "what does X believe" is literally "what did X
 sign, over what ground X holds."
 
+## Reading alongside the text
+
+Anchors like `araby:p07` (or ranges like `araby:p26-p32` for occurrences spanning dialogue)
+refer to paragraph numbers. The pipeline writes `output/araby-numbered.txt` — the full story
+with those numbers inline — so occurrence, ascription, and Joyce's own sentence sit on one
+screen.
+
+## Add your own reader
+
+The three shipped readers are not special; a reading is just a store with a key. To add one
+(a student's reading, a rival critic, a whole seminar's worth):
+
+1. Stand up a store and pull the ground, exactly as the pipeline does for the others
+   (`initHome` + serve, then `pullFrom(<your store>, "http://127.0.0.1:4601/canon", "op-canon")`).
+2. Sign ascriptions with your own key via the built-in `_claim` — one delta per claim:
+
+```graphql
+mutation { _claim(pointers: [
+  { role: "subject", at: "char:boy", context: "desire" },
+  { role: "occurrence", at: "event:chalice-image", context: "ascriptions" },
+  { role: "aspect", value: "desire" },
+  { role: "to", value: "your reading, in your own words" }
+]) { delta } }
+```
+
+3. Query your store with the same `subject`/`occurrence` reads as any other; diff against the
+   shipped readers the way the report diffs them. Add `{ role: "concurs", value: "narrator" }`
+   when your reading countersigns another's. Every claim you sign is content-addressed and
+   yours — a class's readings federate by union, like everything else here.
+
+(A scripted `add-reader` command is on the backlog; today this is the documented manual path.)
+
 ## What to look for
 
 - `char:boy · illusion` on the narrator's store vs. anything on the boy's store: the

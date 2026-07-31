@@ -147,3 +147,23 @@ just the demo:
 - Persona evaluation earns its cost: the anchor errors (4 of 46 off by one paragraph at
   dialogue boundaries), the unread Mangan's sister, and the "foolish blood" diction leak were
   all things the builder read past. Round 2 in flight.
+
+## 2026-07-31 — PROTOTYPE-1 goal state reached (spec §5)
+
+Round 2, same persona, fresh eyes: **4/4/5/4, PASS, no blocking defects** — and, the part
+that matters, "every documented verification ritual worked as claimed." The evaluator ran the
+ground-hash audit on all four stores, checked that per-store occurrence hashes differ as
+documented, diffed readings the report doesn't print (the three-way Mangan's-sister
+divergence), and probed silences (the boy never reads his uncle — "a telling and defensible
+silence"). Epistemic insight scored 5 on the strength of the three-register bazaar reading
+and the never-closing freedom dispute. Her one trust remark is worth pinning: the "Method,
+honestly" section — convergence is authored, only the diffing is computed — "is what made me
+trust the rest." Candor as a feature with a measured effect.
+
+Post-pass, per protocol (no further paid round): anchor ranges for spanning occurrences,
+the O'Donovan Rossa ballad restored to the ground's market-street description (the evaluator
+caught the extraction flattening the nationalist frame), reader ascriptions for the uncle's
+'Arab's Farewell' (the household's own cheap Orientalism) and the come-all-you, a
+paragraph-numbered text emitted beside the report, and a documented add-your-own-reader
+workflow. Remaining →5 items live in PROTOTYPE.md's post-goal backlog; the scripted
+add-reader command and an HTML view are the two that would change who can use this.

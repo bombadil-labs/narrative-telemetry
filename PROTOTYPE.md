@@ -64,5 +64,20 @@ output.
 - [x] Reader ascription passes (boy 21 / narrator 16 / reader 17; epiphany as countersigning)
 - [x] Ingest pipeline (`npm run araby`; serve mode for interrogation)
 - [x] Report generator (readings, divergence ledger, per-pair divergence curves)
-- [ ] Evaluator round 1 → feedback → iterate
-- [ ] Goal state: evaluator ≥4/5 on all axes
+- [x] Evaluator round 1 (Dr. Sullivan persona): 4/4/4/3, no pass — blocking defect (the
+      guide's `_hex` audit failed) + five feedback items; all folded into iteration 2
+- [x] Evaluator round 2 (same persona, fresh eyes): **4/4/5/4, PASS, no blocking defects** —
+      every documented verification ritual held when run
+- [x] **Goal state reached** (spec §5). Round-2 polish feedback (anchor ranges, numbered
+      text, add-your-own-reader workflow, two coverage ascriptions) folded in post-pass
+      without a further paid round, per protocol.
+
+## Post-goal backlog (from round 2, toward 5s)
+
+- Scripted `add-reader` command (the guide documents the manual path; the classroom use is
+  each student signing a reading and the class diffing them — the killer feature).
+- Browsable HTML view over the stores (loam renderers, §23 upstream) — curl is a non-starter
+  for literature students.
+- The boy's ¶37 countersigns read as the narrator ventriloquized — defensible as the epiphany
+  itself; consider marking them explicitly as the moment the boy's voice becomes the
+  narrator's.
