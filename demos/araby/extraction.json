@@ -428,7 +428,7 @@
    "id": "event:mrs-mercer-leaves",
    "description": "Mrs Mercer stands up to go after eight o'clock, sorry she cannot wait, as the night air is bad for her; the boy begins to walk up and down the room, clenching his fists, and his aunt says, 'I'm afraid you may put off your bazaar for this night of Our Lord.'",
    "ordinal": 28,
-   "source": "araby:p17",
+   "source": "araby:p18",
    "participants": [
     "char:mrs-mercer",
     "char:boy",
@@ -450,7 +450,7 @@
    "id": "event:asks-for-money",
    "description": "Midway through his dinner the boy asks the uncle for the money to go to the bazaar; the uncle has forgotten, and says, 'The people are in bed and after their first sleep now.'",
    "ordinal": 30,
-   "source": "araby:p19",
+   "source": "araby:p20",
    "participants": [
     "char:boy",
     "char:uncle"
@@ -460,7 +460,7 @@
    "id": "event:aunt-intervenes",
    "description": "The boy does not smile; his aunt says energetically, 'Can't you give him the money and let him go? You've kept him late enough as it is.'",
    "ordinal": 31,
-   "source": "araby:p21",
+   "source": "araby:p22",
    "participants": [
     "char:aunt",
     "char:uncle",
@@ -579,7 +579,7 @@
    "id": "event:no-thank-you",
    "description": "Looking humbly at the great jars that stand like eastern guards at either side of the dark entrance to the stall, the boy murmurs, 'No, thank you.'",
    "ordinal": 42,
-   "source": "araby:p34",
+   "source": "araby:p33",
    "participants": [
     "char:boy",
     "char:young-lady",
@@ -642,7 +642,7 @@
     "occurrence": "event:morning-watch",
     "subject": "char:boy",
     "aspect": "desire",
-    "to": "her name is like a summons to all my foolish blood; my heart leaps when her door opens"
+    "to": "when her door opens my heart leaps; her name springs to my lips in prayers I do not understand"
    },
    {
     "occurrence": "event:market-errand",
@@ -726,7 +726,8 @@
     "occurrence": "event:final-gaze",
     "subject": "char:boy",
     "aspect": "knowledge",
-    "to": "a creature driven and derided by vanity"
+    "to": "a creature driven and derided by vanity",
+    "concurs": "narrator"
    },
    {
     "occurrence": "event:final-gaze",
@@ -738,25 +739,22 @@
     "occurrence": "event:final-gaze",
     "subject": "char:boy",
     "aspect": "desire",
-    "to": "the errand hollow at the very moment of performing it; there was never anything to buy"
+    "to": "what did I ever want from that bazaar? there was nothing there I could have brought her",
+    "concurs": "narrator"
    },
    {
     "occurrence": "event:final-gaze",
     "subject": "char:boy",
     "aspect": "mission",
-    "to": "an errand inflated into a quest by a boy who had never truly spoken to her"
+    "to": "no quest \u2014 an errand I dressed up as one; I had hardly ever even spoken to her",
+    "concurs": "narrator"
    },
    {
     "occurrence": "event:final-gaze",
     "subject": "char:boy",
     "aspect": "faith",
-    "to": "prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room"
-   },
-   {
-    "occurrence": "event:final-gaze",
-    "subject": "char:boy",
-    "aspect": "mood",
-    "to": "anguish and anger; the enchantment seen for what it was"
+    "to": "my prayers were to nobody; I made a religion of a girl at a railing",
+    "concurs": "narrator"
    }
   ],
   "narrator": [
@@ -854,7 +852,20 @@
     "occurrence": "event:final-gaze",
     "subject": "char:boy",
     "aspect": "mood",
-    "to": "anguish and anger; the enchantment seen for what it was"
+    "to": "anguish and anger: the one moment the child's eyes and mine are the same",
+    "concurs": "boy"
+   },
+   {
+    "occurrence": "event:lamplight-on-her",
+    "subject": "char:mangans-sister",
+    "aspect": "illusion",
+    "to": "I remember lamplight, a white curve of neck, the border of a petticoat \u2014 memory made her an image, never a person; that was the trouble from the start"
+   },
+   {
+    "occurrence": "event:aunt-intervenes",
+    "subject": "char:aunt",
+    "aspect": "worth",
+    "to": "her one energetic sentence rescues the errand the uncle forgot; kindness in that house spoke rarely and to the point"
    }
   ],
   "reader": [
@@ -959,6 +970,18 @@
     "subject": "char:boy",
     "aspect": "knowledge",
     "to": "epiphany as anagnorisis: the blind street internalized; Dublin's paralysis recognized from inside a darkened hall"
+   },
+   {
+    "occurrence": "event:lamplight-on-her",
+    "subject": "char:mangans-sister",
+    "aspect": "worth",
+    "to": "the light inventories her \u2014 neck, hair, hand, petticoat \u2014 while she pleads a convent retreat; the story grants her no interior, only illumination"
+   },
+   {
+    "occurrence": "event:mrs-mercer-leaves",
+    "subject": "char:aunt",
+    "aspect": "faith",
+    "to": "'this night of Our Lord': piety meters even a bazaar; the household calendar is liturgical before it is commercial"
    }
   ]
  }

@@ -43,8 +43,16 @@ q() { curl -s "http://127.0.0.1:$1/$2/graphql" \
   -d "{\"query\": \"$3\"}"; }
 ```
 
-**An occurrence** (ids are in the report's ground table; `occurredAt` is discourse order,
-`source` is the paragraph):
+**Discover what's in the stores** — the catalog lists every subject, occurrence, and aspect,
+so you never have to guess an id (an unknown id returns empty results, not an error — check
+the catalog when a query comes back null):
+
+```sh
+q 4601 canon '{ index(entity: \"araby:catalog\") { subjects occurrences aspects } }'
+```
+
+**An occurrence** (ids are in the catalog and the report's ground table; `occurredAt` is
+discourse order, `source` is the paragraph):
 
 ```sh
 q 4601 canon '{ occurrence(entity: \"event:final-gaze\") { description occurredAt source participants ascriptions } }'
@@ -68,13 +76,20 @@ store about `char:boy`'s `desire` and compare what comes back — same ground, d
 signatures. That difference, tracked across the whole story, is the report's divergence
 ledger; its collapse at the last paragraph is the epiphany.
 
-**Verify the ground is shared** (content addressing): the `_hex` of the same occurrence is
-byte-identical on every store, because perception is verbatim federation:
+**Verify the ground is shared** (content addressing): the ground is signed by the *text's*
+key — the narrator is just another reader — and the `Ground` view shows only what that key
+signed. Its `_hex` is byte-identical on every store, even at occurrences the readers have
+ascribed to, because perception is verbatim federation:
 
 ```sh
-q 4601 canon '{ occurrence(entity: \"event:chalice-image\") { _hex } }'
-q 4602 boy   '{ occurrence(entity: \"event:chalice-image\") { _hex } }'
+q 4601 canon '{ ground(entity: \"event:final-gaze\") { _hex } }'
+q 4602 boy   '{ ground(entity: \"event:final-gaze\") { _hex } }'
+q 4603 narrator '{ ground(entity: \"event:final-gaze\") { _hex } }'
 ```
+
+(The plain `occurrence` view's `_hex` legitimately *differs* per store — it includes each
+store's own `ascriptions` property. Same ground, different readings: the two hashes teach the
+distinction.)
 
 **Provenance of any claim**: every ascription is a signed, content-addressed delta. The
 readings differ because different keys signed them — the boy, the narrator, and the reader

@@ -35,10 +35,10 @@ Three readers read one ground. The **ground** is 46 occurrences — things that 
 | 25 | p15 | Unable to lie at the parlour window because the uncle is in the hall, the boy leaves the house in bad humour and walks slowly towards the school through pitilessly raw air. | the boy (narrator as a child), the boy's uncle |
 | 26 | p16 | The uncle not yet home at dinner, the boy mounts to the high cold empty gloomy rooms of the upper house and goes from room to room singing; from the front window he watches his companions playing below and looks over at the dark house where she lives, seeing the brown-clad figure cast by his imagination. | the boy (narrator as a child), the boy's street companions, Mangan's sister, the boy's house (the priest's former house) |
 | 27 | p17 | Downstairs the boy finds Mrs Mercer, an old garrulous pawnbroker's widow who collects used stamps for some pious purpose, sitting at the fire; he endures the gossip of the tea-table, the meal prolonged beyond an hour, and still the uncle does not come. | the boy (narrator as a child), Mrs Mercer, a pawnbroker's widow, the boy's aunt, the boy's house (the priest's former house) |
-| 28 | p17 | Mrs Mercer stands up to go after eight o'clock, sorry she cannot wait, as the night air is bad for her; the boy begins to walk up and down the room, clenching his fists, and his aunt says, 'I'm afraid you may put off your bazaar for this night of Our Lord.' | Mrs Mercer, a pawnbroker's widow, the boy (narrator as a child), the boy's aunt |
+| 28 | p18 | Mrs Mercer stands up to go after eight o'clock, sorry she cannot wait, as the night air is bad for her; the boy begins to walk up and down the room, clenching his fists, and his aunt says, 'I'm afraid you may put off your bazaar for this night of Our Lord.' | Mrs Mercer, a pawnbroker's widow, the boy (narrator as a child), the boy's aunt |
 | 29 | p19 | At nine o'clock the boy hears his uncle's latchkey in the halldoor, hears him talking to himself and the hallstand rocking under the weight of his overcoat; the boy can interpret these signs. | the boy's uncle, the boy (narrator as a child), the boy's house (the priest's former house) |
-| 30 | p19 | Midway through his dinner the boy asks the uncle for the money to go to the bazaar; the uncle has forgotten, and says, 'The people are in bed and after their first sleep now.' | the boy (narrator as a child), the boy's uncle |
-| 31 | p21 | The boy does not smile; his aunt says energetically, 'Can't you give him the money and let him go? You've kept him late enough as it is.' | the boy's aunt, the boy's uncle, the boy (narrator as a child) |
+| 30 | p20 | Midway through his dinner the boy asks the uncle for the money to go to the bazaar; the uncle has forgotten, and says, 'The people are in bed and after their first sleep now.' | the boy (narrator as a child), the boy's uncle |
+| 31 | p22 | The boy does not smile; his aunt says energetically, 'Can't you give him the money and let him go? You've kept him late enough as it is.' | the boy's aunt, the boy's uncle, the boy (narrator as a child) |
 | 32 | p23 | The uncle says he is very sorry he forgot and that he believes in the old saying 'All work and no play makes Jack a dull boy'; told a second time where the boy is going, he asks did he know 'The Arab's Farewell to his Steed' and, as the boy leaves the kitchen, is about to recite its opening lines to the aunt. | the boy's uncle, the boy (narrator as a child), the boy's aunt |
 | 33 | p24 | The boy holds a florin tightly in his hand as he strides down Buckingham Street towards the station; the streets thronged with buyers and glaring with gas recall to him the purpose of his journey. | the boy (narrator as a child), the florin (two shillings) |
 | 34 | p24 | The boy takes his seat in a third-class carriage of a deserted train, which after an intolerable delay creeps out among ruinous houses and over the twinkling river; at Westland Row porters keep a crowd back, saying it is a special train for the bazaar, and he remains alone in the bare carriage. | the boy (narrator as a child), the special train to the bazaar |
@@ -49,7 +49,7 @@ Three readers read one ground. The **ground** is 46 occurrences — things that 
 | 39 | p26 | Remembering with difficulty why he had come, the boy goes over to one of the open stalls and examines porcelain vases and flowered tea-sets. | the boy (narrator as a child), the porcelain vases and flowered tea-sets, the bazaar Araby |
 | 40 | p26 | At the door of the stall a young lady is talking and laughing with two young gentlemen; the boy remarks their English accents and listens vaguely to their conversation, which ends 'O, there's a ... fib!' | the young lady at the bazaar stall, the two young gentlemen with English accents, the boy (narrator as a child), the bazaar Araby |
 | 41 | p33 | Observing him, the young lady comes over and asks did he wish to buy anything; the tone of her voice is not encouraging, as if she has spoken out of a sense of duty. | the young lady at the bazaar stall, the boy (narrator as a child) |
-| 42 | p34 | Looking humbly at the great jars that stand like eastern guards at either side of the dark entrance to the stall, the boy murmurs, 'No, thank you.' | the boy (narrator as a child), the young lady at the bazaar stall, the great jars like eastern guards |
+| 42 | p33 | Looking humbly at the great jars that stand like eastern guards at either side of the dark entrance to the stall, the boy murmurs, 'No, thank you.' | the boy (narrator as a child), the young lady at the bazaar stall, the great jars like eastern guards |
 | 43 | p35 | The young lady changes the position of one of the vases and goes back to the two young men; they talk of the same subject, and once or twice she glances at the boy over her shoulder. | the young lady at the bazaar stall, the two young gentlemen with English accents, the boy (narrator as a child), the porcelain vases and flowered tea-sets |
 | 44 | p36 | The boy lingers before the stall though he knows his stay is useless, then turns away slowly and walks down the middle of the bazaar, allowing the two pennies to fall against the sixpence in his pocket. | the boy (narrator as a child), the florin (two shillings), the bazaar Araby |
 | 45 | p36 | A voice calls from one end of the gallery that the light is out; the upper part of the hall is now completely dark. | the boy (narrator as a child), the bazaar Araby |
@@ -60,12 +60,12 @@ Three readers read one ground. The **ground** is 46 occurrences — things that 
 ### the boy (in the moment)
 
 - **Mangan's sister · worth**: a figure defined by light, wholly radiant, worth every evening of watching *(¶03)* → she has spoken to me at last; the whole world is changed by her words *(¶07)* → the lamplight itself serves her, lighting her neck, her hair, her hand *(¶09)*
-- **the boy (narrator as a child) · desire**: her name is like a summons to all my foolish blood; my heart leaps when her door opens *(¶04)* → devotion so intense that all my senses desire to veil themselves *(¶06)* → the errand hollow at the very moment of performing it; there was never anything to buy *(¶37)*
-- **the boy (narrator as a child) · faith**: prayers and praises rise from me unbidden; my body is a harp she plays upon *(¶05)* → prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room *(¶37)*
+- **the boy (narrator as a child) · desire**: when her door opens my heart leaps; her name springs to my lips in prayers I do not understand *(¶04)* → devotion so intense that all my senses desire to veil themselves *(¶06)* → what did I ever want from that bazaar? there was nothing there I could have brought her *(¶37)*
+- **the boy (narrator as a child) · faith**: prayers and praises rise from me unbidden; my body is a harp she plays upon *(¶05)* → my prayers were to nobody; I made a religion of a girl at a railing *(¶37)*
 - **the boy (narrator as a child) · freedom**: chafing against school; the serious work of life is ugly monotonous child's play beside my desire *(¶12)*
 - **the boy (narrator as a child) · knowledge**: a creature driven and derided by vanity *(¶37)*
-- **the boy (narrator as a child) · mission**: a bearer of a sacred chalice, guarding something holy through the crowd *(¶05)* → a vow undertaken: I will go to Araby and bring her something worthy of her *(¶11)* → an errand inflated into a quest by a boy who had never truly spoken to her *(¶37)*
-- **the boy (narrator as a child) · mood**: liberated by the high cold empty rooms, singing, her image touched discreetly by lamplight *(¶16)* → the delay is intolerable; every minute the uncle eats is stolen from the quest *(¶19)* → anguish and anger; the enchantment gone out in the dark, nothing bought, nothing to bring her *(¶37)* → anguish and anger; the enchantment seen for what it was *(¶37)*
+- **the boy (narrator as a child) · mission**: a bearer of a sacred chalice, guarding something holy through the crowd *(¶05)* → a vow undertaken: I will go to Araby and bring her something worthy of her *(¶11)* → no quest — an errand I dressed up as one; I had hardly ever even spoken to her *(¶37)*
+- **the boy (narrator as a child) · mood**: liberated by the high cold empty rooms, singing, her image touched discreetly by lamplight *(¶16)* → the delay is intolerable; every minute the uncle eats is stolen from the quest *(¶20)* → anguish and anger; the enchantment gone out in the dark, nothing bought, nothing to bring her *(¶37)*
 - **the flaring Saturday-evening market streets · mood**: a place most hostile to romance, a throng of foes to be passed through unharmed *(¶05)*
 - **the bazaar Araby · worth**: a splendid place whose very syllables cast an Eastern enchantment over my soul *(¶12)* → the magical name displayed at last; the enchanted place reached *(¶24)*
 - **the florin (two shillings) · worth**: the token of the quest, gripped tightly, purpose recalled by its weight *(¶24)*
@@ -74,17 +74,19 @@ Three readers read one ground. The **ground** is 46 occurrences — things that 
 
 - **North Richmond Street · mood**: blind and imperturbable: a dead end wearing a face of decency *(¶01)*
 - **the back drawing-room where the priest died · mood**: musty air of a faith long enclosed; the house we lived in was already a reliquary *(¶02)*
-- **the boy (narrator as a child) · desire**: confused adoration beginning, mistaken by the child for devotion *(¶03)* → the errand hollow at the very moment of performing it; there was never anything to buy *(¶34)*
+- **the boy (narrator as a child) · desire**: confused adoration beginning, mistaken by the child for devotion *(¶03)* → the errand hollow at the very moment of performing it; there was never anything to buy *(¶33)*
 - **the boy (narrator as a child) · faith**: prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room *(¶06)*
 - **the boy (narrator as a child) · freedom**: play already circumscribed by dark lanes, ashpits and shadow; even joy ran a gauntlet *(¶03)*
 - **the boy (narrator as a child) · illusion**: foolish blood, foolish daily rites of watching a door through a lowered blind *(¶04)* → romance borrowed wholesale from religion; the child cast himself as grail-bearer in a market street *(¶05)*
 - **the boy (narrator as a child) · knowledge**: a creature driven and derided by vanity *(¶37)*
 - **the boy (narrator as a child) · mission**: an errand inflated into a quest by a boy who had never truly spoken to her *(¶11)*
-- **the boy (narrator as a child) · mood**: the misgiving heart of that morning confirmed; a deserted special train was the truth of the journey *(¶24)* → anguish and anger; the enchantment seen for what it was *(¶37)*
+- **the boy (narrator as a child) · mood**: the misgiving heart of that morning confirmed; a deserted special train was the truth of the journey *(¶24)* → anguish and anger: the one moment the child's eyes and mine are the same *(¶37)*
 - **the bazaar Araby · faith**: a church after a service: the enchantment already over before the pilgrim arrived *(¶25)*
 - **the bazaar Araby · illusion**: a name doing work no actual bazaar could do; Eastern enchantment conjured from syllables *(¶12)*
 - **the boy's uncle · knowledge**: signs the boy could already interpret: the talking to himself, the rocking hallstand *(¶19)*
 - **the boy's uncle · worth**: carelessness dressed up in proverb and recitation; the guardian of the quest could not even remember it *(¶23)*
+- **Mangan's sister · illusion**: I remember lamplight, a white curve of neck, the border of a petticoat — memory made her an image, never a person; that was the trouble from the start *(¶09)*
+- **the boy's aunt · worth**: her one energetic sentence rescues the errand the uncle forgot; kindness in that house spoke rarely and to the point *(¶22)*
 
 ### the implied reader
 
@@ -94,7 +96,7 @@ Three readers read one ground. The **ground** is 46 occurrences — things that 
 - **the flaring Saturday-evening market streets · mood**: the litanies of shop-boys: liturgy already fused to commerce, sacred vocabulary at the pig-cheek barrels *(¶05)*
 - **the boy (narrator as a child) · illusion**: religious language doing romantic work; the chalice is borrowed capital he will spend at the bazaar *(¶05)*
 - **the boy (narrator as a child) · knowledge**: epiphany as anagnorisis: the blind street internalized; Dublin's paralysis recognized from inside a darkened hall *(¶37)*
-- **the boy (narrator as a child) · worth**: with eightpence left he could not have bought her anything anyway; the refusal only ratifies the arithmetic *(¶34)*
+- **the boy (narrator as a child) · worth**: with eightpence left he could not have bought her anything anyway; the refusal only ratifies the arithmetic *(¶33)*
 - **Mangan's sister's silver bracelet · worth**: she turns silver on her wrist while pleading a convent retreat; ornament and piety on the same arm *(¶09)*
 - **the bazaar Araby · illusion**: shabby Orientalism: an Eastern enchantment retailed in Dublin at a shilling a head *(¶12)*
 - **the bazaar Araby · mood**: closing time as revelation: the lights go out on the enchantment because the till is counted *(¶36)*
@@ -103,6 +105,8 @@ Three readers read one ground. The **ground** is 46 occurrences — things that 
 - **the florin (two shillings) · worth**: two shillings: the entire treasury of the quest, and it will not survive the gate *(¶24)* → half the florin gone to a weary man at the turnstile; no sixpenny entrance for latecomers *(¶25)* → two pennies against the sixpence: the audit of the quest, counted out in his pocket *(¶36)*
 - **the Café Chantant · mood**: coins falling on a salver in church-like silence: the collection plate after the service *(¶25)*
 - **the young lady at the bazaar stall · mood**: English accents flirting over a 'fib' at an Oriental bazaar: the imperial marketplace in miniature, indifferent to Dublin devotion *(¶26)*
+- **Mangan's sister · worth**: the light inventories her — neck, hair, hand, petticoat — while she pleads a convent retreat; the story grants her no interior, only illumination *(¶09)*
+- **the boy's aunt · faith**: 'this night of Our Lord': piety meters even a bazaar; the household calendar is liturgical before it is commercial *(¶18)*
 
 ## The divergence ledger (where the readers disagree)
 
@@ -110,12 +114,13 @@ Same subject, same aspect, different signatures. End-of-story state per reader:
 
 | subject · aspect | the boy (in the moment) | the narrator (recalling) | the implied reader |
 |---|---|---|---|
-| the boy (narrator as a child) · desire | the errand hollow at the very moment of performing it; there was never anything to buy | the errand hollow at the very moment of performing it; there was never anything to buy | — |
-| the boy (narrator as a child) · faith | prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room | prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room | — |
+| **≠** Mangan's sister · worth | the lamplight itself serves her, lighting her neck, her hair, her hand | — | the light inventories her — neck, hair, hand, petticoat — while she pleads a convent retreat; the story grants her no interior, only illumination |
+| the boy (narrator as a child) · desire | what did I ever want from that bazaar? there was nothing there I could have brought her *(countersigns the narrator)* | the errand hollow at the very moment of performing it; there was never anything to buy | — |
+| the boy (narrator as a child) · faith | my prayers were to nobody; I made a religion of a girl at a railing *(countersigns the narrator)* | prayers addressed to no god he could have named; sentiment mistaken for sanctity in a dead priest's room | — |
 | **≠** the boy (narrator as a child) · freedom | chafing against school; the serious work of life is ugly monotonous child's play beside my desire | play already circumscribed by dark lanes, ashpits and shadow; even joy ran a gauntlet | — |
-| **≠** the boy (narrator as a child) · knowledge | a creature driven and derided by vanity | a creature driven and derided by vanity | epiphany as anagnorisis: the blind street internalized; Dublin's paralysis recognized from inside a darkened hall |
-| the boy (narrator as a child) · mission | an errand inflated into a quest by a boy who had never truly spoken to her | an errand inflated into a quest by a boy who had never truly spoken to her | — |
-| the boy (narrator as a child) · mood | anguish and anger; the enchantment seen for what it was | anguish and anger; the enchantment seen for what it was | — |
+| **≠** the boy (narrator as a child) · knowledge | a creature driven and derided by vanity *(countersigns the narrator)* | a creature driven and derided by vanity | epiphany as anagnorisis: the blind street internalized; Dublin's paralysis recognized from inside a darkened hall |
+| the boy (narrator as a child) · mission | no quest — an errand I dressed up as one; I had hardly ever even spoken to her *(countersigns the narrator)* | an errand inflated into a quest by a boy who had never truly spoken to her | — |
+| the boy (narrator as a child) · mood | anguish and anger; the enchantment gone out in the dark, nothing bought, nothing to bring her | anguish and anger: the one moment the child's eyes and mine are the same *(countersigns the boy)* | — |
 | **≠** the flaring Saturday-evening market streets · mood | a place most hostile to romance, a throng of foes to be passed through unharmed | — | the litanies of shop-boys: liturgy already fused to commerce, sacred vocabulary at the pig-cheek barrels |
 | **≠** the florin (two shillings) · worth | the token of the quest, gripped tightly, purpose recalled by its weight | — | two pennies against the sixpence: the audit of the quest, counted out in his pocket |
 | **≠** the boy (narrator as a child) · illusion | — | romance borrowed wholesale from religion; the child cast himself as grail-bearer in a market street | religious language doing romantic work; the chalice is borrowed capital he will spend at the bazaar |
@@ -132,10 +137,10 @@ For each pair of readers: how many shared subject·aspect pairs the two currentl
         ▂▂▂▂▂▃▃▃▃▃▃▅▆▆▆▆▆▆▆▆▆▆▆▆▆████████████▂
 ```
 
-**boy–reader** — peak 3, at end 3:
+**boy–reader** — peak 4, at end 4:
 
 ```
-          ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▅▅▅▅▅▅▅▅▅▅▅▅▅█
+          ▂▂▂▂▂▂▂▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▆▆▆▆▆▆▆▆▆▆▆▆▆█
 ```
 
 **narrator–reader** — peak 4, at end 4:
@@ -146,6 +151,10 @@ For each pair of readers: how many shared subject·aspect pairs the two currentl
 
 The boy–narrator collapse at the final occurrence is the epiphany, measured: at "Gazing up into the darkness…" the boy's reading of himself becomes the narrator's — the boy countersigns states the narrator has held all along, and disputes that ran the length of the story close on the last paragraph. What stays open between them: **the boy (narrator as a child) · freedom** — the epiphany shows the boy his vanity, not his cage; the dispute that survives the story is the one Joyce says Dubliners cannot close from inside. The narrator–reader gap never closes: the older voice and the implied reader keep their different registers to the end, which is why the story supports rereading.
 
+## Method, honestly
+
+The readings — including the convergence at the epiphany — are **authored annotations**, not discoveries: an annotator read the story and recorded three readers' claims, and the boy's final countersigns are explicit `concurs` claims, not measured coincidence. What the system contributes is structure: every claim is signed, anchored, and queryable; divergence and convergence are computed from the recorded claims, not asserted in prose; and rival annotations could be added as further readers and diffed the same way. Telemetry here means the measurement of a reading, not the automation of one.
+
 ## Provenance
 
-Every claim above is a signed, content-addressed delta in a running store; the stores federate by union and can be interrogated live (see GUIDE.md). The ground is hash-identical across all four stores; the readings never are — that difference is the story.
+Every claim above is a signed, content-addressed delta in a running store; the stores federate by union and can be interrogated live (see GUIDE.md). The ground — the text's own key's claims, viewed through the author-scoped Ground reading — is byte-identical across all four stores; the readings never are. That difference is the story.

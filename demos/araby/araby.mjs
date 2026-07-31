@@ -37,10 +37,12 @@ const extraction = JSON.parse(readFileSync(join(ROOT, "extraction.json"), "utf8"
 // ---- cast -------------------------------------------------------------------------------------
 // Actor seeds sign claims; operator seeds govern stores. All fixed: every run reproducible.
 const ACTORS = {
-  narrator: "4d".repeat(32), // the text's voice: signs ground; also a reader of his own past
+  text: "7a".repeat(32), //     THE TEXT: signs the ground, and only the ground
+  narrator: "4d".repeat(32), // the older voice recalling — a reader, not the ground's author
   boy: "5e".repeat(32), //      the character in the moment
   reader: "6f".repeat(32), //   the implied reader
 };
+const TEXT_AUTHOR = authorForSeed(ACTORS.text);
 const STORES = {
   canon: { port: 4601, seed: "a1".repeat(32) },
   boy: { port: 4602, seed: "b2".repeat(32) },
@@ -79,6 +81,50 @@ const occurrenceRegister = {
   },
   roots: extraction.occurrences.slice(0, 4).map((o) => o.id),
   writable: ["description", "occurredAt", "source"],
+};
+
+// The Ground reading gathers ONLY what the text's own key signed — an author-scoped lens.
+// Its view of an occurrence is therefore byte-identical on every store that has pulled the
+// ground, no matter what readings the store has layered on top: the auditable shared floor.
+const groundRegister = {
+  hyperschema: {
+    name: "Ground",
+    alg: 1,
+    body: {
+      op: "group",
+      key: "byTargetContext",
+      in: {
+        op: "select",
+        pred: {
+          and: [
+            { match: { field: "author", cmp: "eq", const: TEXT_AUTHOR } },
+            { hasPointer: { targetEntity: { var: "root" } } },
+          ],
+        },
+        in: { op: "mask", policy: "drop", in: "input" },
+      },
+    },
+  },
+  schema: {
+    name: "Ground",
+    alg: 1,
+    props: { description: pickDesc, occurredAt: pickDesc, source: pickDesc, participants: allAsc },
+    default: pickDesc,
+  },
+  roots: extraction.occurrences.slice(0, 4).map((o) => o.id),
+};
+
+// The catalog makes the stores discoverable: the text signs membership claims at
+// araby:catalog, and the Index reading lists subjects, occurrences, and aspects.
+const indexRegister = {
+  hyperschema: { name: "Index", alg: 1, body: gatherBody },
+  schema: {
+    name: "Index",
+    alg: 1,
+    props: { subjects: allAsc, occurrences: allAsc, aspects: allAsc },
+    default: allAsc,
+  },
+  roots: ["araby:catalog"],
 };
 
 // The Subject reading's aspect props are generated from the extraction's aspect inventory —
@@ -123,23 +169,37 @@ async function openStore(name) {
   return { name, gateway, backend, base: `${handle.url}/${name}`, handle };
 }
 
+// Keep-alive sockets can be handed back after the server closed them (the village harness's
+// documented hazard) — short requests say connection: close, and resets retry a few times.
+async function post(url, token, payload, tries = 3) {
+  for (let i = 0; ; i++) {
+    try {
+      return await fetch(url, {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+          connection: "close",
+        },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      const code = String(err?.cause?.code ?? "");
+      if (i + 1 >= tries || !/ECONNRESET|ECONNREFUSED|UND_ERR_SOCKET/.test(code)) throw err;
+      await new Promise((r) => setTimeout(r, 150 * (i + 1)));
+    }
+  }
+}
+
 async function gql(base, token, query) {
-  const res = await fetch(`${base}/graphql`, {
-    method: "POST",
-    headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
-    body: JSON.stringify({ query }),
-  });
+  const res = await post(`${base}/graphql`, token, { query });
   const body = await res.json();
   if (body.errors) throw new Error(`${base}: ${JSON.stringify(body.errors)}`);
   return body.data;
 }
 
 async function register(base, token, spec) {
-  const res = await fetch(`${base}/register`, {
-    method: "POST",
-    headers: { authorization: `Bearer ${token}`, "content-type": "application/json" },
-    body: JSON.stringify(spec),
-  });
+  const res = await post(`${base}/register`, token, spec);
   if (!res.ok) throw new Error(`register failed: ${res.status} ${await res.text()}`);
 }
 
@@ -165,6 +225,9 @@ async function claimOccurrence(base, token, o) {
 }
 
 async function ascribe(base, token, a) {
+  // `concurs` marks a countersign: this reader now holds, in their own voice, the state
+  // another reader holds — convergence as an authored claim, never a string coincidence.
+  const concurs = a.concurs ? `,\n        { role: "concurs", value: "${a.concurs}" }` : "";
   await gql(
     base,
     token,
@@ -172,7 +235,7 @@ async function ascribe(base, token, a) {
         { role: "subject", at: "${a.subject}", context: "${a.aspect}" },
         { role: "occurrence", at: "${a.occurrence}", context: "ascriptions" },
         { role: "aspect", value: "${a.aspect}" },
-        { role: "to", value: "${esc(a.to)}" }
+        { role: "to", value: "${esc(a.to)}" }${concurs}
       ]) { delta } }`,
   );
 }
@@ -189,12 +252,38 @@ for (const name of Object.keys(STORES)) stores[name] = await openStore(name);
 for (const store of Object.values(stores)) {
   await register(store.base, opToken(store.name), occurrenceRegister);
   await register(store.base, opToken(store.name), subjectRegister);
+  await register(store.base, opToken(store.name), groundRegister);
+  await register(store.base, opToken(store.name), indexRegister);
 }
 
-// Ground: the narrator is the text's voice; occurrences land in canon under his key.
+// Ground: signed by THE TEXT's key — the narrator is a reader like the others.
 const byOrdinal = [...extraction.occurrences].sort((a, b) => a.ordinal - b.ordinal);
-for (const o of byOrdinal) await claimOccurrence(stores.canon.base, tok("narrator", "canon"), o);
+for (const o of byOrdinal) await claimOccurrence(stores.canon.base, tok("text", "canon"), o);
 console.log(`araby: ground landed (${byOrdinal.length} occurrences)`);
+
+// Catalog: the text signs membership so the stores are discoverable by query.
+for (const e of extraction.entities) {
+  await gql(stores.canon.base, tok("text", "canon"),
+    `mutation { _claim(pointers: [
+        { role: "catalog", at: "araby:catalog", context: "subjects" },
+        { role: "member", at: "${e.id}", context: "inCatalog" }
+      ]) { delta } }`);
+}
+for (const o of byOrdinal) {
+  await gql(stores.canon.base, tok("text", "canon"),
+    `mutation { _claim(pointers: [
+        { role: "catalog", at: "araby:catalog", context: "occurrences" },
+        { role: "member", at: "${o.id}", context: "inCatalog" }
+      ]) { delta } }`);
+}
+for (const a of aspects) {
+  await gql(stores.canon.base, tok("text", "canon"),
+    `mutation { _claim(pointers: [
+        { role: "catalog", at: "araby:catalog", context: "aspects" },
+        { role: "aspect", value: "${a}" }
+      ]) { delta } }`);
+}
+console.log(`araby: catalog signed (${extraction.entities.length} subjects, ${byOrdinal.length} occurrences, ${aspects.length} aspects)`);
 
 // Every reader pulls the whole ground: Araby is a single-narrator text, so divergence here is
 // purely ascriptive — same exposure, different readings. (Exposure gaps live in the Dracula demo.)
@@ -209,18 +298,22 @@ for (const [who, list] of Object.entries(extraction.ascriptions)) {
 }
 
 // ---- self-checks ------------------------------------------------------------------------------
-const probe = byOrdinal[Math.floor(byOrdinal.length / 2)];
-const hexOf = async (store) =>
-  (await gql(store.base, opToken(store.name), `{ occurrence(entity: "${probe.id}") { _hex } }`))
-    .occurrence._hex;
-const canonHex = await hexOf(stores.canon);
-for (const name of ["boy", "narrator", "reader"]) {
-  if ((await hexOf(stores[name])) !== canonHex) {
-    console.error(`araby: FAIL — ${name} diverges from canon at ${probe.id}`);
-    process.exit(1);
+// The Ground reading (author-scoped to the text's key) must be byte-identical on every store,
+// INCLUDING at occurrences the readers have ascribed to — that is the guide's audit ritual,
+// so it must hold at the hardest case, not a lucky unread one.
+for (const probeId of ["event:final-gaze", byOrdinal[Math.floor(byOrdinal.length / 2)].id]) {
+  const hexOf = async (store) =>
+    (await gql(store.base, opToken(store.name), `{ ground(entity: "${probeId}") { _hex } }`))
+      .ground._hex;
+  const canonHex = await hexOf(stores.canon);
+  for (const name of ["boy", "narrator", "reader"]) {
+    if ((await hexOf(stores[name])) !== canonHex) {
+      console.error(`araby: FAIL — ${name}'s ground diverges from canon at ${probeId}`);
+      process.exit(1);
+    }
   }
+  console.log(`araby: ✓ ground view byte-identical across all four stores (${probeId})`);
 }
-console.log(`araby: ✓ ground hash-identical across all four stores (${probe.id})`);
 
 // ---- report -----------------------------------------------------------------------------------
 const { buildReport } = await import(join(ROOT, "report.mjs"));
