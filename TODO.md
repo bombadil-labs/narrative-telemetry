@@ -5,28 +5,30 @@ enters `spec/` with a provenance footer. Ordered roughly by dependency, not prio
 
 ## v1 spine — the *Dracula* demo
 
-1. **Decide canonical Event granularity for *Dracula*** — per scene, per line, per speech-act?
-   (README open question; corpus-dependent.) *Dracula*'s natural grain is probably the dated
-   diary/letter/telegram entry — the text segments itself. Decision blocks item 2.
-2. **First register file: `event.register.json`** — the canonical Event hyperschema + schema
-   (README's worked example is the sketch to make real). This is the first landing; it brings
-   the first `spec/` section with it.
-3. **Canonical store for *Dracula*** — `demos/dracula/`: ingest a first slice of the Gutenberg
-   text as Event deltas. Epistolary, so likely **ungoverned** (no single narrating authority) —
-   the first real test of that posture.
+1. ~~Decide canonical Event granularity~~ — **done (spec §1):** one Event per narrated
+   occurrence; the dated diary/letter/telegram entry is its `source`.
+2. ~~First register file: `event.register.json`~~ — **done (spec §1):**
+   `demos/dracula/schemas/event.register.json`, exercised by `npm run groundbreak`.
+3. **Canonical store at scale** — groundbreak seeds four events by hand; ingest a real slice of
+   the Gutenberg text as Event deltas. Also: try the **ungoverned** posture (no operator) the
+   README wants for epistolary forms — groundbreak's canon is still operator-governed with
+   diarist-signed entries.
 4. **Translation pass for source markup** — Gutenberg plain text → Event deltas via an
    operator-signed translation spec, lifting the `cinelog`-into-the-village pattern
    (`loam demos/village/village.mjs`) rather than re-deriving it.
-5. **Point-of-view stores** — start with two sovereign stores (Mina, Seward), each growing by
-   the two moves only: pull (perception) and author+point (belief). Include one distorted-belief
-   fixture (a delta with no canonical correspondent — the Wormtongue move).
+5. **More point-of-view stores** — groundbreak stands up Mina (pull + private belief, the
+   Wormtongue move included); add Seward and character→character gossip federation.
 6. **`tellsAbout` mutation** — the telling as one canonical n-ary claim; its effect as a
    federation event in the told store. Verify epiphany latency is a pure read off the two
    timestamps.
 7. **Confluence store + first comparative lens** — `readers/irony` pulls canon + POV stores,
-   writes nothing; `DramaticIrony` as the live set-difference lens (village `almanac` →
-   `Dossier` family is the direct precedent).
+   writes nothing; `DramaticIrony` as a registered lens (village `almanac` → `Dossier` family
+   is the direct precedent). Groundbreak computes the set-difference in-process; the lens makes
+   it a served, subscribable surface.
 8. **Confluence dashboard** — in the shape of the village's `dashboard.html`.
+9. **Unpin loam** — package.json declares `@bombadil/loam@^0.1.0` but the demo needs loam at
+   source HEAD (the npm release predates the hyperschema/schema register split). Swap to the
+   next published version when it exists and delete spec §1's caveat.
 
 ## Derived telemetry (each is a resolver/runner landing, loam §22/§6)
 

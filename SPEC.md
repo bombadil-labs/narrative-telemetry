@@ -13,5 +13,4 @@ quarantine — are marked "loam §N" to keep the two numberings distinct.)
 
 | §   | Section |
 | --- | ------- |
-
-*(Nothing has landed yet. The first row arrives with the first register file that runs.)*
+| §1 | [Groundbreak: two sovereign stores over one text](spec/01-groundbreak.md) |

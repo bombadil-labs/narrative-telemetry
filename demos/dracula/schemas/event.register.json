@@ -1,0 +1,33 @@
+{
+  "hyperschema": {
+    "name": "Event",
+    "alg": 1,
+    "body": {
+      "op": "group",
+      "key": "byTargetContext",
+      "in": {
+        "op": "select",
+        "pred": { "hasPointer": { "targetEntity": { "var": "root" } } },
+        "in": { "op": "mask", "policy": "drop", "in": "input" }
+      }
+    }
+  },
+  "schema": {
+    "name": "Event",
+    "alg": 1,
+    "props": {
+      "summary": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "kind": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "occurredAt": { "pick": { "order": { "byTimestamp": "desc" } } },
+      "source": { "pick": { "order": { "byTimestamp": "desc" } } }
+    },
+    "default": { "pick": { "order": { "byTimestamp": "desc" } } }
+  },
+  "roots": [
+    "event:jonathan-departs-munich",
+    "event:jonathan-arrives-castle",
+    "event:jonathan-meets-dracula",
+    "event:lucy-illness"
+  ],
+  "writable": ["summary", "kind", "occurredAt", "source"]
+}
