@@ -19,3 +19,4 @@ quarantine — are marked "loam §N" to keep the two numberings distinct.)
 | §4 | [Occurrences and ascriptions: characters are readers](spec/04-occurrences-and-ascriptions.md) |
 | §5 | [PROTOTYPE-1: the Araby pipeline, externally verified](spec/05-araby-prototype.md) |
 | §6 | [The static site: store snapshots on GitHub Pages](spec/06-static-site.md) |
+| §7 | [The critical edition: text-first reading pages](spec/07-critical-edition.md) |
