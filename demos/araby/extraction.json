@@ -4,132 +4,220 @@
   {
    "id": "char:boy",
    "kind": "character",
-   "label": "the boy (narrator as a child)"
+   "label": "the boy (narrator as a child)",
+   "mentions": []
   },
   {
    "id": "char:mangans-sister",
    "kind": "character",
-   "label": "Mangan's sister"
+   "label": "Mangan's sister",
+   "mentions": [
+    "Mangan\u2019s sister"
+   ]
   },
   {
    "id": "char:mangan",
    "kind": "character",
-   "label": "Mangan (the sister's brother, a playmate)"
+   "label": "Mangan (the sister's brother, a playmate)",
+   "mentions": [
+    "Her brother",
+    "her brother"
+   ]
   },
   {
    "id": "char:uncle",
    "kind": "character",
-   "label": "the boy's uncle"
+   "label": "the boy's uncle",
+   "mentions": [
+    "my uncle",
+    "My uncle"
+   ]
   },
   {
    "id": "char:aunt",
    "kind": "character",
-   "label": "the boy's aunt"
+   "label": "the boy's aunt",
+   "mentions": [
+    "my aunt",
+    "My aunt"
+   ]
   },
   {
    "id": "char:priest",
    "kind": "character",
-   "label": "the dead priest, former tenant"
+   "label": "the dead priest, former tenant",
+   "mentions": [
+    "a priest",
+    "the priest"
+   ]
   },
   {
    "id": "char:mrs-mercer",
    "kind": "character",
-   "label": "Mrs Mercer, a pawnbroker's widow"
+   "label": "Mrs Mercer, a pawnbroker's widow",
+   "mentions": [
+    "Mrs Mercer"
+   ]
   },
   {
    "id": "char:young-lady",
    "kind": "character",
-   "label": "the young lady at the bazaar stall"
+   "label": "the young lady at the bazaar stall",
+   "mentions": [
+    "the young lady",
+    "a young lady",
+    "The young lady"
+   ]
   },
   {
    "id": "char:two-gentlemen",
    "kind": "character",
-   "label": "the two young gentlemen with English accents"
+   "label": "the two young gentlemen with English accents",
+   "mentions": [
+    "the two young men"
+   ]
   },
   {
    "id": "char:companions",
    "kind": "character",
-   "label": "the boy's street companions"
+   "label": "the boy's street companions",
+   "mentions": [
+    "my companions"
+   ]
   },
   {
    "id": "char:master",
    "kind": "character",
-   "label": "the schoolmaster"
+   "label": "the schoolmaster",
+   "mentions": [
+    "my master\u2019s"
+   ]
   },
   {
    "id": "char:turnstile-man",
    "kind": "character",
-   "label": "the weary-looking man at the turnstile"
+   "label": "the weary-looking man at the turnstile",
+   "mentions": [
+    "a weary-looking man"
+   ]
   },
   {
    "id": "char:money-counters",
    "kind": "character",
-   "label": "the two men counting money on a salver"
+   "label": "the two men counting money on a salver",
+   "mentions": [
+    "two men"
+   ]
   },
   {
    "id": "object:florin",
    "kind": "object",
-   "label": "the florin (two shillings)"
+   "label": "the florin (two shillings)",
+   "mentions": [
+    "a florin",
+    "the two pennies",
+    "the sixpence"
+   ]
   },
   {
    "id": "object:priests-books",
    "kind": "object",
-   "label": "the priest's paper-covered books"
+   "label": "the priest's paper-covered books",
+   "mentions": [
+    "paper-covered books",
+    "_The Memoirs of Vidocq_"
+   ]
   },
   {
    "id": "object:bicycle-pump",
    "kind": "object",
-   "label": "the priest's rusty bicycle-pump"
+   "label": "the priest's rusty bicycle-pump",
+   "mentions": [
+    "rusty bicycle-pump"
+   ]
   },
   {
    "id": "object:silver-bracelet",
    "kind": "object",
-   "label": "Mangan's sister's silver bracelet"
+   "label": "Mangan's sister's silver bracelet",
+   "mentions": [
+    "a silver bracelet"
+   ]
   },
   {
    "id": "object:porcelain-vases",
    "kind": "object",
-   "label": "the porcelain vases and flowered tea-sets"
+   "label": "the porcelain vases and flowered tea-sets",
+   "mentions": [
+    "porcelain vases",
+    "flowered tea-sets"
+   ]
   },
   {
    "id": "object:great-jars",
    "kind": "object",
-   "label": "the great jars like eastern guards"
+   "label": "the great jars like eastern guards",
+   "mentions": [
+    "the great jars"
+   ]
   },
   {
    "id": "place:north-richmond-street",
    "kind": "place",
-   "label": "North Richmond Street"
+   "label": "North Richmond Street",
+   "mentions": [
+    "North Richmond Street"
+   ]
   },
   {
    "id": "place:boys-house",
    "kind": "place",
-   "label": "the boy's house (the priest's former house)"
+   "label": "the boy's house (the priest's former house)",
+   "mentions": [
+    "our house"
+   ]
   },
   {
    "id": "place:back-drawing-room",
    "kind": "place",
-   "label": "the back drawing-room where the priest died"
+   "label": "the back drawing-room where the priest died",
+   "mentions": [
+    "the back drawing-room"
+   ]
   },
   {
    "id": "place:market-streets",
    "kind": "place",
-   "label": "the flaring Saturday-evening market streets"
+   "label": "the flaring Saturday-evening market streets",
+   "mentions": [
+    "the flaring streets"
+   ]
   },
   {
    "id": "place:train",
    "kind": "place",
-   "label": "the special train to the bazaar"
+   "label": "the special train to the bazaar",
+   "mentions": [
+    "a deserted train",
+    "third-class carriage"
+   ]
   },
   {
    "id": "place:araby-bazaar",
    "kind": "place",
-   "label": "the bazaar Araby"
+   "label": "the bazaar Araby",
+   "mentions": [
+    "_Araby_",
+    "the bazaar"
+   ]
   },
   {
    "id": "place:cafe-chantant",
    "kind": "place",
-   "label": "the Caf\u00e9 Chantant"
+   "label": "the Caf\u00e9 Chantant",
+   "mentions": [
+    "_Caf\u00e9 Chantant_"
+   ]
   }
  ],
  "occurrences": [
@@ -140,7 +228,8 @@
    "source": "araby:p01",
    "participants": [
     "place:north-richmond-street"
-   ]
+   ],
+   "quote": "North Richmond Street, being blind, was a quiet street except at the\nhour when the Christian Brothers\u2019 School set the boys free."
   },
   {
    "id": "event:priest-died",
@@ -151,7 +240,8 @@
     "char:priest",
     "place:back-drawing-room",
     "place:boys-house"
-   ]
+   ],
+   "quote": "The former tenant of our house, a priest, had died in the back\ndrawing-room."
   },
   {
    "id": "event:finds-books",
@@ -162,7 +252,8 @@
     "char:boy",
     "object:priests-books",
     "place:boys-house"
-   ]
+   ],
+   "quote": "Among these I found a few paper-covered books, the\npages of which were curled and damp"
   },
   {
    "id": "event:finds-bicycle-pump",
@@ -173,7 +264,8 @@
     "char:boy",
     "object:bicycle-pump",
     "place:boys-house"
-   ]
+   ],
+   "quote": "under one of\nwhich I found the late tenant\u2019s rusty bicycle-pump"
   },
   {
    "id": "event:winter-play",
@@ -184,7 +276,8 @@
     "char:boy",
     "char:companions",
     "place:north-richmond-street"
-   ]
+   ],
+   "quote": "The\ncold air stung us and we played till our bodies glowed."
   },
   {
    "id": "event:hide-from-uncle",
@@ -196,7 +289,8 @@
     "char:companions",
     "char:uncle",
     "place:north-richmond-street"
-   ]
+   ],
+   "quote": "If my uncle was seen turning the\ncorner we hid in the shadow until we had seen him safely housed."
   },
   {
    "id": "event:sister-calls-brother",
@@ -208,7 +302,8 @@
     "char:mangan",
     "char:boy",
     "char:companions"
-   ]
+   ],
+   "quote": "Mangan\u2019s sister came out on the doorstep to call her brother in to his\ntea we watched her from our shadow peer up and down the street"
   },
   {
    "id": "event:watching-from-railings",
@@ -219,7 +314,8 @@
     "char:boy",
     "char:mangans-sister",
     "char:mangan"
-   ]
+   ],
+   "quote": "Her dress swung as she moved her body and the\nsoft rope of her hair tossed from side to side."
   },
   {
    "id": "event:morning-watch",
@@ -230,7 +326,8 @@
     "char:boy",
     "char:mangans-sister",
     "place:boys-house"
-   ]
+   ],
+   "quote": "Every morning I lay on the floor in the front parlour watching her\ndoor."
   },
   {
    "id": "event:following-to-school",
@@ -240,7 +337,8 @@
    "participants": [
     "char:boy",
     "char:mangans-sister"
-   ]
+   ],
+   "quote": "I kept her brown\nfigure always in my eye"
   },
   {
    "id": "event:market-errand",
@@ -251,7 +349,8 @@
     "char:boy",
     "char:aunt",
     "place:market-streets"
-   ]
+   ],
+   "quote": "We walked through the flaring streets, jostled by\ndrunken men and bargaining women"
   },
   {
    "id": "event:chalice-image",
@@ -262,7 +361,8 @@
     "char:boy",
     "char:mangans-sister",
     "place:market-streets"
-   ]
+   ],
+   "quote": "I\nimagined that I bore my chalice safely through a throng of foes."
   },
   {
    "id": "event:tears-and-flood",
@@ -272,7 +372,8 @@
    "participants": [
     "char:boy",
     "char:mangans-sister"
-   ]
+   ],
+   "quote": "my body was like a harp\nand her words and gestures were like fingers running upon the wires"
   },
   {
    "id": "event:o-love-murmur",
@@ -282,7 +383,8 @@
    "participants": [
     "char:boy",
     "place:back-drawing-room"
-   ]
+   ],
+   "quote": "I pressed\nthe palms of my hands together until they trembled, murmuring: _\u201cO\nlove! O love!\u201d_ many times."
   },
   {
    "id": "event:first-words",
@@ -293,7 +395,8 @@
     "char:boy",
     "char:mangans-sister",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "She asked me was I\ngoing to _Araby_."
   },
   {
    "id": "event:why-cant-you",
@@ -303,7 +406,8 @@
    "participants": [
     "char:boy",
     "char:mangans-sister"
-   ]
+   ],
+   "quote": "\u201cAnd why can\u2019t you?\u201d I asked."
   },
   {
    "id": "event:bracelet-and-retreat",
@@ -315,7 +419,8 @@
     "char:boy",
     "char:mangan",
     "object:silver-bracelet"
-   ]
+   ],
+   "quote": "While she spoke she turned a silver bracelet round and round her wrist."
   },
   {
    "id": "event:lamplight-on-her",
@@ -325,7 +430,8 @@
    "participants": [
     "char:mangans-sister",
     "char:boy"
-   ]
+   ],
+   "quote": "The light from the lamp opposite our door\ncaught the white curve of her neck"
   },
   {
    "id": "event:well-for-you",
@@ -335,7 +441,8 @@
    "participants": [
     "char:mangans-sister",
     "char:boy"
-   ]
+   ],
+   "quote": "\u201cIt\u2019s well for you,\u201d she said."
   },
   {
    "id": "event:the-promise",
@@ -345,7 +452,8 @@
    "participants": [
     "char:boy",
     "char:mangans-sister"
-   ]
+   ],
+   "quote": "\u201cIf I go,\u201d I said, \u201cI will bring you something.\u201d"
   },
   {
    "id": "event:days-of-waiting",
@@ -356,7 +464,8 @@
     "char:boy",
     "char:mangans-sister",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "The syllables of the word _Araby_ were called to me through\nthe silence in which my soul luxuriated"
   },
   {
    "id": "event:asks-leave",
@@ -367,7 +476,8 @@
     "char:boy",
     "char:aunt",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I asked for leave to go to the bazaar on Saturday night. My\naunt was surprised and hoped it was not some Freemason affair."
   },
   {
    "id": "event:master-sternness",
@@ -377,7 +487,8 @@
    "participants": [
     "char:boy",
     "char:master"
-   ]
+   ],
+   "quote": "I watched my master\u2019s face pass from\namiability to sternness"
   },
   {
    "id": "event:reminds-uncle",
@@ -388,7 +499,8 @@
     "char:boy",
     "char:uncle",
     "place:boys-house"
-   ]
+   ],
+   "quote": "On Saturday morning I reminded my uncle that I wished to go to the\nbazaar in the evening."
   },
   {
    "id": "event:walk-to-school",
@@ -398,7 +510,8 @@
    "participants": [
     "char:boy",
     "char:uncle"
-   ]
+   ],
+   "quote": "I left the house in bad humour and walked slowly towards\nthe school."
   },
   {
    "id": "event:upper-rooms",
@@ -410,7 +523,8 @@
     "char:companions",
     "char:mangans-sister",
     "place:boys-house"
-   ]
+   ],
+   "quote": "The high cold empty gloomy rooms\nliberated me and I went from room to room singing."
   },
   {
    "id": "event:mrs-mercer-visit",
@@ -422,7 +536,8 @@
     "char:mrs-mercer",
     "char:aunt",
     "place:boys-house"
-   ]
+   ],
+   "quote": "I found Mrs Mercer sitting at the fire.\nShe was an old garrulous woman, a pawnbroker\u2019s widow"
   },
   {
    "id": "event:mrs-mercer-leaves",
@@ -433,7 +548,9 @@
     "char:mrs-mercer",
     "char:boy",
     "char:aunt"
-   ]
+   ],
+   "quote": "\u201cI\u2019m afraid you may put off your bazaar for this night of Our Lord.\u201d",
+   "quotePara": 18
   },
   {
    "id": "event:uncle-returns",
@@ -444,7 +561,8 @@
     "char:uncle",
     "char:boy",
     "place:boys-house"
-   ]
+   ],
+   "quote": "At nine o\u2019clock I heard my uncle\u2019s latchkey in the halldoor."
   },
   {
    "id": "event:asks-for-money",
@@ -454,7 +572,8 @@
    "participants": [
     "char:boy",
     "char:uncle"
-   ]
+   ],
+   "quote": "When he was midway through his dinner I asked him to give me the money\nto go to the bazaar. He had forgotten."
   },
   {
    "id": "event:aunt-intervenes",
@@ -465,7 +584,9 @@
     "char:aunt",
     "char:uncle",
     "char:boy"
-   ]
+   ],
+   "quote": "\u201cCan\u2019t you give him the money and let him go? You\u2019ve kept him late\nenough as it is.\u201d",
+   "quotePara": 22
   },
   {
    "id": "event:uncle-proverb",
@@ -476,7 +597,8 @@
     "char:uncle",
     "char:boy",
     "char:aunt"
-   ]
+   ],
+   "quote": "he\nasked me did I know _The Arab\u2019s Farewell to his Steed_"
   },
   {
    "id": "event:florin-departure",
@@ -486,7 +608,8 @@
    "participants": [
     "char:boy",
     "object:florin"
-   ]
+   ],
+   "quote": "I held a florin tightly in my hand as I strode down Buckingham Street\ntowards the station."
   },
   {
    "id": "event:deserted-train",
@@ -496,7 +619,8 @@
    "participants": [
     "char:boy",
     "place:train"
-   ]
+   ],
+   "quote": "I took my\nseat in a third-class carriage of a deserted train."
   },
   {
    "id": "event:arrival-magical-name",
@@ -506,7 +630,8 @@
    "participants": [
     "char:boy",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "In front of me was a large building which displayed the magical\nname."
   },
   {
    "id": "event:shilling-turnstile",
@@ -518,7 +643,8 @@
     "char:turnstile-man",
     "object:florin",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I passed in quickly through a turnstile, handing a\nshilling to a weary-looking man."
   },
   {
    "id": "event:dark-hall",
@@ -528,7 +654,8 @@
    "participants": [
     "char:boy",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I recognised a silence\nlike that which pervades a church after a service."
   },
   {
    "id": "event:money-counting",
@@ -540,7 +667,8 @@
     "char:money-counters",
     "place:cafe-chantant",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "two men were counting\nmoney on a salver. I listened to the fall of the coins."
   },
   {
    "id": "event:examines-vases",
@@ -551,7 +679,8 @@
     "char:boy",
     "object:porcelain-vases",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I went over to one of the\nstalls and examined porcelain vases and flowered tea-sets."
   },
   {
    "id": "event:english-banter",
@@ -563,7 +692,8 @@
     "char:two-gentlemen",
     "char:boy",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I remarked their English accents and listened vaguely to\ntheir conversation."
   },
   {
    "id": "event:did-you-wish-to-buy",
@@ -573,7 +703,8 @@
    "participants": [
     "char:young-lady",
     "char:boy"
-   ]
+   ],
+   "quote": "Observing me the young lady came over and asked me did I wish to buy\nanything."
   },
   {
    "id": "event:no-thank-you",
@@ -584,7 +715,8 @@
     "char:boy",
     "char:young-lady",
     "object:great-jars"
-   ]
+   ],
+   "quote": "I looked humbly at the great jars\nthat stood like eastern guards at either side of the dark entrance to\nthe stall"
   },
   {
    "id": "event:lady-returns-to-men",
@@ -596,7 +728,8 @@
     "char:two-gentlemen",
     "char:boy",
     "object:porcelain-vases"
-   ]
+   ],
+   "quote": "The young lady changed the position of one of the vases and went back\nto the two young men."
   },
   {
    "id": "event:pennies-fall",
@@ -607,7 +740,8 @@
     "char:boy",
     "object:florin",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I allowed the two pennies to\nfall against the sixpence in my pocket."
   },
   {
    "id": "event:lights-out",
@@ -617,7 +751,8 @@
    "participants": [
     "char:boy",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I heard a voice call from one\nend of the gallery that the light was out."
   },
   {
    "id": "event:final-gaze",
@@ -627,7 +762,8 @@
    "participants": [
     "char:boy",
     "place:araby-bazaar"
-   ]
+   ],
+   "quote": "I saw myself as a creature driven and\nderided by vanity; and my eyes burned with anguish and anger."
   }
  ],
  "ascriptions": {

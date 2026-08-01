@@ -322,7 +322,7 @@ writeFileSync(join(OUT, "report.md"), buildReport({ extraction }, gathered));
 console.log(`araby: output/report.md written`);
 
 // Paragraph-numbered text: occurrence, ascription, and Joyce's sentence on one screen.
-const raw = readFileSync(join(ROOT, "corpus", "araby.txt"), "utf8");
+const raw = readFileSync(join(ROOT, "corpus", "araby.txt"), "utf8").replace(/\r\n/g, "\n");
 const paras = raw.split(/\n\s*\n/).map((p) => p.trim()).filter((p) => p && p !== "ARABY");
 writeFileSync(
   join(OUT, "araby-numbered.txt"),

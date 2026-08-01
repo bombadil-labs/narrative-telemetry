@@ -160,6 +160,14 @@ and the never-closing freedom dispute. Her one trust remark is worth pinning: th
 honestly" section — convergence is authored, only the diffing is computed — "is what made me
 trust the rest." Candor as a feature with a measured effect.
 
+*(Later the same day: §7 rebuilt the reading page as a text-first critical edition — margin
+glosses, lens switcher, contested shading, clickable claim-spans and entity references, and a
+reading mode where the readings emerge at the reader's own position, bookmarked. The
+byte-exact quote anchoring caught a \r\n/\n line-ending mismatch between corpus and
+annotation — the kind of defect only exact-match discipline surfaces. Myk's chronological
+reading mode is quietly the deepest feature: it makes the visitor a reader-store, growing by
+discourse position.)*
+
 Post-pass, per protocol (no further paid round): anchor ranges for spanning occurrences,
 the O'Donovan Rossa ballad restored to the ground's market-street description (the evaluator
 caught the extraction flattening the nationalist frame), reader ascriptions for the uncle's
